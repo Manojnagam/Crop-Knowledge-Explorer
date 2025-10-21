@@ -31,9 +31,12 @@ crop_data = {}
 def load_crop_data():
     """Load crop data from JSON file"""
     global crop_data
-    
+
     try:
-        json_file = "crops_data.json"
+        # Use absolute path to avoid Render path issues
+        json_file = os.path.join(os.path.dirname(__file__), "crops_data.json")
+        print(f"Looking for JSON at: {json_file}")
+
         if not os.path.exists(json_file):
             print(f"Warning: {json_file} not found! Using sample data.")
             # Return sample data if file doesn't exist
@@ -66,15 +69,15 @@ def load_crop_data():
                     {"English": "Poultry Unit", "Tamil": "கோழி பிரிவு"}
                 ]
             }
-        
+
         with open(json_file, 'r', encoding='utf-8') as f:
             crop_data = json.load(f)
-        
-        print(f"Loaded crop data with {sum(len(items) for items in crop_data.values())} total items")
+
+        print(f"✅ Loaded crop data with {sum(len(items) for items in crop_data.values())} total items")
         return crop_data
-        
+
     except Exception as e:
-        print(f"Error loading crop data: {e}")
+        print(f"❌ Error loading crop data: {e}")
         return {}
 
 @app.route('/')
