@@ -1,0 +1,154 @@
+{
+  "Fruits": [
+    {
+      "English": "Papaya",
+      "Tamil": "பப்பாளி"
+    },
+    {
+      "English": "Banana",
+      "Tamil": "வாழை"
+    },
+    {
+      "English": "Guava",
+      "Tamil": "கொய்யா"
+    },
+    {
+      "English": "Pomegranate",
+      "Tamil": "மாதுளை"
+    }
+  ],
+  "Vegetables": [
+    {
+      "English": "Brinjal",
+      "Tamil": "கத்திரிக்காய்"
+    },
+    {
+      "English": "Bitter Gourd",
+      "Tamil": "பாகற்காய்"
+    },
+    {
+      "English": "Bottle Gourd",
+      "Tamil": "சுரைக்காய்"
+    },
+    {
+      "English": "Pumpkin",
+      "Tamil": "பூசணிக்காய்"
+    },
+    {
+      "English": "Bhendi (Okra)",
+      "Tamil": "வேண்டைக்காய்"
+    },
+    {
+      "English": "Carrot",
+      "Tamil": "காரட்"
+    },
+    {
+      "English": "Cabbage",
+      "Tamil": "முட்டைக்கோஸ்"
+    },
+    {
+      "English": "Cauliflower",
+      "Tamil": "பூக்கோஸ்"
+    },
+    {
+      "English": "Beans",
+      "Tamil": "பீன்ஸ்"
+    },
+    {
+      "English": "Beetroot",
+      "Tamil": "பீட்ரூட்"
+    },
+    {
+      "English": "Broccoli",
+      "Tamil": "ப்ரோக்கோலி"
+    },
+    {
+      "English": "Moringa",
+      "Tamil": "முருங்கை"
+    }
+  ],
+  "Greens": [
+    {
+      "English": "Palak",
+      "Tamil": "பாலக்"
+    },
+    {
+      "English": "Amaranthus",
+      "Tamil": "அரைக்கீரை"
+    },
+    {
+      "English": "Lettuce",
+      "Tamil": "லெட்டூஸ்"
+    },
+    {
+      "English": "Spinach",
+      "Tamil": "பசலைக்கீரை"
+    }
+  ],
+  "Tubers": [
+    {
+      "English": "Potato",
+      "Tamil": "உருளைக்கிழங்கு"
+    },
+    {
+      "English": "Sweet Potato",
+      "Tamil": "இனிப்புக்கிழங்கு"
+    },
+    {
+      "English": "Cassava",
+      "Tamil": "மரவள்ளிக்கிழங்கு"
+    }
+  ],
+  "Herbal": [
+    {
+      "English": "Ashwagandha",
+      "Tamil": "அமுக்கரா"
+    },
+    {
+      "English": "Aloe Vera",
+      "Tamil": "கற்றாழை"
+    },
+    {
+      "English": "Tulsi",
+      "Tamil": "துளசி"
+    },
+    {
+      "English": "Curry Leaves",
+      "Tamil": "கருவேப்பிலை"
+    },
+    {
+      "English": "Fenugreek",
+      "Tamil": "வெந்தயம்"
+    },
+    {
+      "English": "Vetiver",
+      "Tamil": "வெட்டிவேர்"
+    },
+    {
+      "English": "Coriander",
+      "Tamil": "கொத்தமல்லி"
+    }
+  ],
+  "Units": [
+    {
+      "English": "Vermicompost Unit",
+      "Tamil": "உழவன் கம்போஸ்ட்"
+    },
+    {
+      "English": "Poultry Unit",
+      "Tamil": "கோழி பண்ணை"
+    },
+    {
+      "English": "Goat Unit",
+      "Tamil": "ஆட்டு பண்ணை"
+    },
+    {
+      "English": "Dairy Unit",
+      "Tamil": "பால் பண்ணை"
+    },
+    {
+      "English": "Azolla Unit",
+      "Tamil": "அசோல்லா"
+    }
+  ]
+}

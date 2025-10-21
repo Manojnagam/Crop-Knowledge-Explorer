@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crop Knowledge Explorer</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #f8fafc;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1b4332;
+      margin-bottom: 10px;
+    }
+
+    p.subtitle {
+      text-align: center;
+      font-size: 16px;
+      color: #444;
+      margin-bottom: 25px;
+    }
+
+    .language-buttons, .category-buttons {
+      text-align: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      background: #1b4332;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      margin: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #2d6a4f;
+      transform: scale(1.05);
+    }
+
+    .active {
+      background: #52b788 !important;
+      color: white !important;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      padding: 10px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      padding: 14px;
+      font-size: 17px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    footer {
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌾 Crop Knowledge Explorer</h1>
+  <p class="subtitle">Choose a category to view items in your preferred language</p>
+
+  <div class="language-buttons" id="languageButtons"></div>
+  <div class="category-buttons" id="categoryButtons"></div>
+  <div class="cards" id="cardsContainer"></div>
+
+  <footer>© 2025 Crop Knowledge Explorer | Designed for multilingual accessibility 🌱</footer>
+
+  <script>
+    const languages = {
+      English: "English",
+      Tamil: "தமிழ்",
+      Telugu: "తెలుగు",
+      Hindi: "हिन्दी",
+      Kannada: "ಕನ್ನಡ"
+    };
+
+    const categoryTranslations = {
+      Fruits:   { English: "Fruits 🍎", Tamil: "பழங்கள் 🍎", Telugu: "పండ్లు 🍎", Hindi: "फल 🍎", Kannada: "ಹಣ್ಣುಗಳು 🍎" },
+      Vegetables:{ English: "Vegetables 🥦", Tamil: "காய்கறிகள் 🥦", Telugu: "కూరగాయలు 🥦", Hindi: "सब्ज़ियाँ 🥦", Kannada: "ತರಕಾರಿಗಳು 🥦" },
+      Greens:   { English: "Greens 🌾", Tamil: "கீரைகள் 🌾", Telugu: "ఆకుకూరలు 🌾", Hindi: "साग 🌾", Kannada: "ಸೊಪ್ಪುಗಳು 🌾" },
+      Tubers:   { English: "Tubers 🥔", Tamil: "கிழங்குகள் 🥔", Telugu: "కందమూలాలు 🥔", Hindi: "कंद 🥔", Kannada: "ನೆಲಗಡ್ಡೆಗಳು 🥔" },
+      Herbal:   { English: "Herbal 🌿", Tamil: "மூலிகைகள் 🌿", Telugu: "ఔషధ మొక్కలు 🌿", Hindi: "औषधीय पौधे 🌿", Kannada: "ಔಷಧಿ ಸಸ್ಯಗಳು 🌿" },
+      Units:    { English: "Units ⚖️", Tamil: "பிரிவுகள் ⚖️", Telugu: "యూనిట్లు ⚖️", Hindi: "इकाइयाँ ⚖️", Kannada: "ಘಟಕಗಳು ⚖️" },
+    };
+
+    let DATA = {};
+    let currentLang = "English";
+
+    const langButtonsDiv = document.getElementById("languageButtons");
+    const categoryButtons = document.getElementById("categoryButtons");
+    const cardsContainer = document.getElementById("cardsContainer");
+
+    // Create language buttons
+    Object.keys(languages).forEach(lang => {
+      const btn = document.createElement("button");
+      btn.textContent = languages[lang];
+      btn.onclick = () => setLanguage(lang, btn);
+      langButtonsDiv.appendChild(btn);
+    });
+
+    function setLanguage(lang, btn) {
+      currentLang = lang;
+      document.querySelectorAll(".language-buttons button").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      renderCategories();
+    }
+
+    function renderCategories() {
+      categoryButtons.innerHTML = "";
+      cardsContainer.innerHTML = "";
+
+      Object.keys(DATA).forEach(cat => {
+        if (!categoryTranslations[cat]) return; // skip others
+        const btn = document.createElement("button");
+        btn.textContent = categoryTranslations[cat][currentLang];
+        btn.onclick = () => showCategory(cat, btn);
+        categoryButtons.appendChild(btn);
+      });
+    }
+
+    function showCategory(category, btn = null) {
+  // Highlight active button
+  document.querySelectorAll(".category-buttons button").forEach(b => b.classList.remove("active"));
+  if (btn) btn.classList.add("active");
+  cardsContainer.innerHTML = "";
+
+  if (!DATA[category]) return;
+
+  // Display only valid, unique items
+  const seen = new Set();
+  DATA[category].forEach(item => {
+    let name = item[currentLang] && item[currentLang].trim() ? item[currentLang] : item["English"];
+    if (!name || name.toLowerCase() === category.toLowerCase() || name.toLowerCase() === "nan") return;
+    if (seen.has(name.toLowerCase())) return;
+    seen.add(name.toLowerCase());
+
+    const card = document.createElement("div");
+    card.className = "card";
+    card.textContent = name;
+    cardsContainer.appendChild(card);
+  });
+}
+
+
+    fetch("crops_data.json")
+      .then(res => res.json())
+      .then(json => {
+        DATA = json;
+        renderCategories();
+      })
+      .catch(err => {
+        console.error("Error loading data:", err);
+        document.body.innerHTML += "<p style='color:red;text-align:center;'>❌ Failed to load crops_data.json</p>";
+      });
+  </script>
+</body>
+</html>

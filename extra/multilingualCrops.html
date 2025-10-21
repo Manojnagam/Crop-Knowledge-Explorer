@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>🌿 Multilingual Crops Explorer</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: "Inter", system-ui, sans-serif;
+      background: linear-gradient(to bottom right, #f0fdf4, #dcfce7); /* light green gradient */
+    }
+    .category-btn {
+      background: white;
+      transition: all 0.25s ease;
+    }
+    .category-btn:hover {
+      background: #f0fdf4;
+      transform: scale(1.04);
+      border-color: #16a34a;
+      color: #166534;
+    }
+    .card {
+      background: white;
+      transition: all 0.25s ease;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+
+<body class="text-gray-800 min-h-screen p-6 flex flex-col items-center">
+  <header class="text-center mb-8">
+    <h1 class="text-4xl font-extrabold text-green-600 mb-2">🌿 Multilingual Crops Explorer</h1>
+    <p class="text-gray-600 text-sm">Choose a category to view items in English, Tamil, Telugu, Hindi, and Kannada.</p>
+  </header>
+
+  <!-- Category Buttons -->
+  <div id="buttons" class="flex flex-wrap justify-center gap-4 mb-8 max-w-4xl"></div>
+
+  <!-- Display Grid -->
+  <main id="grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 max-w-6xl"></main>
+
+  <footer class="mt-10 text-gray-500 text-xs text-center">
+    © 2025 Crop Knowledge Explorer | Designed for multilingual accessibility 🌍
+  </footer>
+
+<script>
+// Category translations (multilingual)
+const CATEGORY_TRANSLATIONS = {
+  "Fruits": "Fruits / பழங்கள் / పండ్లు / फल / ಹಣ್ಣುಗಳು",
+  "Vegetables": "Vegetables / காய்கறிகள் / కూరగాయలు / सब्ज़ियाँ / ತರಕಾರಿಗಳು",
+  "Greens": "Greens / கீரைகள் / ఆకుకూరలు / साग / ಸೊಪ್ಪುಗಳು",
+  "Tubers": "Tubers / கிழங்குகள் / కందమూలాలు / कंद / ನೆಲಗಡ್ಡೆಗಳು",
+  "Herbal": "Herbal / மூலிகைகள் / ఔషధ మొక్కలు / औषधीय पौधे / ಔಷಧಿ ಸಸ್ಯಗಳು",
+  "Units": "Units / பிரிவுகள் / యూనిట్లు / इकाइयाँ / ಘಟಕಗಳು"
+};
+
+// Dataset with 5 languages
+const DATA = {
+  "Fruits": [
+    {"English":"Papaya","Tamil":"பப்பாளி","Telugu":"బొప్పాయి","Hindi":"पपीता","Kannada":"ಪಪ್ಪಾಯಿ"},
+    {"English":"Banana","Tamil":"வாழைப்பழம்","Telugu":"అరటి","Hindi":"केला","Kannada":"ಬಾಳೆಹಣ್ಣು"},
+    {"English":"Guava","Tamil":"கொய்யா","Telugu":"జామపండు","Hindi":"अमरुद","Kannada":"ಸೀಬೆಹಣ್ಣು"},
+    {"English":"Pomegranate","Tamil":"மாதுளை","Telugu":"దానిమ్మ","Hindi":"अनार","Kannada":"ದಾಳಿಂಬೆ"}
+  ],
+  "Vegetables": [
+    {"English":"Brinjal","Tamil":"கத்திரிக்காய்","Telugu":"వంకాయ","Hindi":"बैंगन","Kannada":"ಬದನೇಕಾಯಿ"},
+    {"English":"Bitter Gourd","Tamil":"பாகற்காய்","Telugu":"కాకర","Hindi":"करेला","Kannada":"ಹಾಗಲಕಾಯಿ"},
+    {"English":"Bottle Gourd","Tamil":"சுரைக்காய்","Telugu":"సొరకాయ","Hindi":"लौकी","Kannada":"ಸೊರೆಕಾಯಿ"},
+    {"English":"Pumpkin","Tamil":"பூசணிக்காய்","Telugu":"గుమ్మడికాయ","Hindi":"कद्दू","Kannada":"ಕುಂಬಳಕಾಯಿ"}
+  ],
+  "Greens": [
+    {"English":"Palak","Tamil":"பசலைக்கீரை","Telugu":"పాలకూర","Hindi":"पालक","Kannada":"ಪಾಲಕ್ ಸೊಪ್ಪು"},
+    {"English":"Amaranthus","Tamil":"அரைக்கீரை","Telugu":"తోటకూర","Hindi":"चौलाई","Kannada":"ಹರಿವೆ ಸೊಪ್ಪು"},
+    {"English":"Lettuce","Tamil":"லெட்டூஸ்","Telugu":"లెట్యూస్","Hindi":"लेट्यूस","Kannada":"ಲೆಟ್ಯೂಸ್"},
+    {"English":"Spinach","Tamil":"கீரை","Telugu":"చిక్కుడు ఆకులు","Hindi":"पालक","Kannada":"ಬಸಳೆ ಸೊಪ್ಪು"}
+  ],
+  "Tubers": [
+    {"English":"Potato","Tamil":"உருளைக்கிழங்கு","Telugu":"బంగాళాదుంప","Hindi":"आलू","Kannada":"ಆಲೂಗಡ್ಡೆ"},
+    {"English":"Sweet Potato","Tamil":"சர்க்கரைவள்ளிக்கிழங்கு","Telugu":"చిలకడదుంప","Hindi":"शकरकंद","Kannada":"ಗೋಡಿಗಡ್ಡೆ"},
+    {"English":"Cassava","Tamil":"மரவள்ளிக்கிழங்கு","Telugu":"తపియోకా","Hindi":"कसावा","Kannada":"ಮರವಳ್ಳಿಗಡ್ಡೆ"}
+  ],
+  "Herbal": [
+    {"English":"Ashwagandha","Tamil":"அசுவகந்தா","Telugu":"అశ్వగంధ","Hindi":"अश्वगंधा","Kannada":"ಅಶ್ವಗಂಧ"},
+    {"English":"Aloe Vera","Tamil":"கற்றாழை","Telugu":"గృహకుమారి","Hindi":"एलोवेरा","Kannada":"ಲೋಲ್ ಪ್ಲಾಂಟ್"},
+    {"English":"Tulsi","Tamil":"துளசி","Telugu":"తులసి","Hindi":"तुलसी","Kannada":"ತುಳಸಿ"},
+    {"English":"Curry Leaves","Tamil":"கருவேப்பிலை","Telugu":"కరివేపాకు","Hindi":"करी पत्ता","Kannada":"ಕರಿಬೇವಿನ ಸೊಪ್ಪು"}
+  ],
+  "Units": [
+    {"English":"Vermicompost Unit","Tamil":"உயிர்வளம் பிரிவு","Telugu":"వెర్మికంపోస్ట్ యూనిట్","Hindi":"वर्मी कम्पोस्ट यूनिट","Kannada":"ಹುಳು ಗೊಬ್ಬರ ಘಟಕ"},
+    {"English":"Poultry Unit","Tamil":"கோழி வளர்ப்பு பிரிவு","Telugu":"కోడి పెంపకం యూనిట్","Hindi":"पोल्ट्री यूनिट","Kannada":"ಕೋಳಿ ಘಟಕ"},
+    {"English":"Goat Unit","Tamil":"ஆட்டு வளர்ப்பு பிரிவு","Telugu":"మేక యూనిట్","Hindi":"बकरी यूनिट","Kannada":"ಮೇಕೆ ಘಟಕ"},
+    {"English":"Dairy Unit","Tamil":"பால் உற்பத்தி பிரிவு","Telugu":"డెయిరీ యూనిట్","Hindi":"डेयरी यूनिट","Kannada":"ಹಾಲು ಘಟಕ"}
+  ]
+};
+
+// Create multilingual category buttons
+function createButtons() {
+  const container = document.getElementById('buttons');
+  Object.entries(CATEGORY_TRANSLATIONS).forEach(([key, label]) => {
+    const btn = document.createElement('button');
+    btn.textContent = label;
+    btn.className = 'category-btn text-center px-4 py-2 rounded-lg border border-gray-300 text-sm sm:text-base w-full sm:w-auto';
+    btn.onclick = () => showCategory(key);
+    container.appendChild(btn);
+  });
+}
+
+// Show items dynamically
+function showCategory(cat) {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+  const items = DATA[cat] || [];
+  if (items.length === 0) {
+    grid.innerHTML = '<p class="text-gray-500">No items found.</p>';
+    return;
+  }
+  items.forEach(it => {
+    const card = document.createElement('div');
+    card.className = 'card p-4 rounded-xl border border-gray-100 shadow-sm';
+    card.innerHTML = `
+      <h3 class="font-semibold text-lg mb-2 text-green-700">${it.English}</h3>
+      <ul class="text-sm space-y-1">
+        <li><strong>Tamil:</strong> ${it.Tamil}</li>
+        <li><strong>Telugu:</strong> ${it.Telugu}</li>
+        <li><strong>Hindi:</strong> ${it.Hindi}</li>
+        <li><strong>Kannada:</strong> ${it.Kannada}</li>
+      </ul>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+// Initialize
+createButtons();
+showCategory("Fruits");
+</script>
+</body>
+</html>

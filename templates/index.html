@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌾 Crop Knowledge Explorer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🌾 Crop Knowledge Explorer</h1>
+            <p class="subtitle">Discover crops in multiple languages</p>
+        </header>
+
+        <!-- Language Selection -->
+        <section class="language-section">
+            <h2 id="language-title">Choose Language / மொழியைத் தேர்ந்தெடுக்கவும்</h2>
+            <div class="language-buttons">
+                <button class="lang-btn active" data-lang="en">English</button>
+                <button class="lang-btn" data-lang="ta">தமிழ்</button>
+                <button class="lang-btn" data-lang="te">తెలుగు</button>
+                <button class="lang-btn" data-lang="hi">हिन्दी</button>
+                <button class="lang-btn" data-lang="kn">ಕನ್ನಡ</button>
+            </div>
+        </section>
+
+        <!-- Category Selection -->
+        <section class="category-section">
+            <h2 id="category-title">Select Category</h2>
+            <div class="category-buttons" id="category-buttons">
+                <!-- Categories will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Crop Display -->
+        <section class="crops-section" id="crops-section" style="display: none;">
+            <div class="crops-header">
+                <h2 id="crops-title">Crops</h2>
+                <button class="back-btn" id="back-btn">← Back to Categories</button>
+            </div>
+            <div class="crops-grid" id="crops-grid">
+                <!-- Crops will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Loading Indicator -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Loading crop data...</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

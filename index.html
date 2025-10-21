@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multilingual Crop Knowledge App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .language-selector {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .lang-btn.active {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            border-color: white;
+        }
+
+        .category-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .category-btn {
+            background: white;
+            border: none;
+            padding: 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .category-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .category-btn.active {
+            background: #4CAF50;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .content-area {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            min-height: 400px;
+        }
+
+        .category-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+            border-bottom: 3px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+
+        .crops-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .crop-card {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .crop-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .crop-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .crop-tamil {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+
+        .crop-botanical {
+            font-size: 0.9rem;
+            color: #95a5a6;
+            margin-bottom: 8px;
+        }
+
+        .crop-value-added {
+            font-size: 0.9rem;
+            color: #27ae60;
+            font-weight: 500;
+        }
+
+        .loading {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            padding: 50px;
+        }
+
+        .error {
+            text-align: center;
+            color: #e74c3c;
+            font-size: 1.1rem;
+            padding: 20px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .language-selector {
+                gap: 5px;
+            }
+            
+            .lang-btn {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .category-selector {
+                grid-template-columns: 1fr;
+            }
+            
+            .crops-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌱 Multilingual Crop Knowledge</h1>
+            <p>Explore agricultural crops in multiple languages</p>
+        </div>
+
+        <div class="language-selector">
+            <button class="lang-btn active" data-lang="en">English</button>
+            <button class="lang-btn" data-lang="ta">தமிழ்</button>
+            <button class="lang-btn" data-lang="te">తెలుగు</button>
+            <button class="lang-btn" data-lang="hi">हिन्दी</button>
+            <button class="lang-btn" data-lang="kn">ಕನ್ನಡ</button>
+        </div>
+
+        <div class="category-selector" id="categorySelector">
+            <!-- Categories will be loaded dynamically -->
+        </div>
+
+        <div class="content-area">
+            <div class="loading" id="loadingMessage">Loading crop data...</div>
+            <div id="contentArea" style="display: none;">
+                <h2 class="category-title" id="categoryTitle"></h2>
+                <div class="stats" id="statsArea"></div>
+                <div class="crops-grid" id="cropsGrid"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Category translations
+        const categoryTranslations = {
+            "Fruits": {
+                "en": "Fruits",
+                "ta": "பழங்கள்",
+                "te": "పండ్లు",
+                "hi": "फल",
+                "kn": "ಹಣ್ಣುಗಳು"
+            },
+            "Vegetables": {
+                "en": "Vegetables",
+                "ta": "காய்கறிகள்",
+                "te": "కూరగాయలు",
+                "hi": "सब्ज़ियाँ",
+                "kn": "ತರಕಾರಿಗಳು"
+            },
+            "Greens": {
+                "en": "Greens",
+                "ta": "கீரைகள்",
+                "te": "ఆకుకూరలు",
+                "hi": "साग",
+                "kn": "ಸೊಪ್ಪುಗಳು"
+            },
+            "Tubers": {
+                "en": "Tubers",
+                "ta": "கிழங்குகள்",
+                "te": "కందమూలాలు",
+                "hi": "कंद",
+                "kn": "ನೆಲಗಡ್ಡೆಗಳು"
+            },
+            "Herbal": {
+                "en": "Herbal",
+                "ta": "மூலிகைகள்",
+                "te": "ఔషధ మొక్కలు",
+                "hi": "औषधीय पौधे",
+                "kn": "ಔಷಧಿ ಸಸ್ಯಗಳು"
+            },
+            "Units": {
+                "en": "Units",
+                "ta": "பிரிவுகள்",
+                "te": "యూనిట్లు",
+                "hi": "इकाइयाँ",
+                "kn": "ಘಟಕಗಳು"
+            }
+        };
+
+        let currentLanguage = 'en';
+        let currentCategory = null;
+        let categories = [];
+        let categoryData = {};
+
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCategories();
+            setupEventListeners();
+        });
+
+        function setupEventListeners() {
+            // Language selector
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const lang = this.dataset.lang;
+                    selectLanguage(lang);
+                });
+            });
+        }
+
+        function selectLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Update active language button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
+            
+            // Update category buttons
+            updateCategoryButtons();
+            
+            // Reload current category if one is selected
+            if (currentCategory) {
+                loadCategoryData(currentCategory);
+            }
+        }
+
+        function updateCategoryButtons() {
+            const container = document.getElementById('categorySelector');
+            container.innerHTML = '';
+            
+            categories.forEach(category => {
+                const btn = document.createElement('button');
+                btn.className = 'category-btn';
+                btn.textContent = categoryTranslations[category][currentLanguage];
+                btn.dataset.category = category;
+                
+                if (category === currentCategory) {
+                    btn.classList.add('active');
+                }
+                
+                btn.addEventListener('click', function() {
+                    selectCategory(category);
+                });
+                
+                container.appendChild(btn);
+            });
+        }
+
+        function selectCategory(category) {
+            currentCategory = category;
+            
+            // Update active category button
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-category="${category}"]`).classList.add('active');
+            
+            loadCategoryData(category);
+        }
+
+        async function loadCategories() {
+            try {
+                const response = await fetch('/api/categories');
+                const data = await response.json();
+                categories = data.categories;
+                updateCategoryButtons();
+                
+                // Auto-select first category
+                if (categories.length > 0) {
+                    selectCategory(categories[0]);
+                }
+            } catch (error) {
+                console.error('Error loading categories:', error);
+                showError('Failed to load categories');
+            }
+        }
+
+        async function loadCategoryData(category) {
+            const loadingEl = document.getElementById('loadingMessage');
+            const contentEl = document.getElementById('contentArea');
+            
+            loadingEl.style.display = 'block';
+            contentEl.style.display = 'none';
+            
+            try {
+                const response = await fetch(`/api/category?name=${encodeURIComponent(category)}`);
+                const data = await response.json();
+                
+                if (data.error) {
+                    showError(data.error);
+                    return;
+                }
+                
+                displayCategoryData(data);
+                
+            } catch (error) {
+                console.error('Error loading category data:', error);
+                showError('Failed to load category data');
+            }
+        }
+
+        function displayCategoryData(data) {
+            const loadingEl = document.getElementById('loadingMessage');
+            const contentEl = document.getElementById('contentArea');
+            const titleEl = document.getElementById('categoryTitle');
+            const statsEl = document.getElementById('statsArea');
+            const gridEl = document.getElementById('cropsGrid');
+            
+            // Update title
+            titleEl.textContent = categoryTranslations[data.category][currentLanguage];
+            
+            // Update stats
+            statsEl.innerHTML = `
+                <div class="stat-item">
+                    <div class="stat-number">${data.items.length}</div>
+                    <div class="stat-label">Total Crops</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">${data.category}</div>
+                    <div class="stat-label">Category</div>
+                </div>
+            `;
+            
+            // Display crops
+            gridEl.innerHTML = '';
+            data.items.forEach(crop => {
+                const cropCard = document.createElement('div');
+                cropCard.className = 'crop-card';
+                
+                // Determine which language to show for crop names
+                let cropName = crop.english;
+                if (currentLanguage === 'ta' && crop.tamil) {
+                    cropName = crop.tamil;
+                }
+                
+                cropCard.innerHTML = `
+                    <div class="crop-name">${cropName}</div>
+                    ${crop.tamil && currentLanguage !== 'ta' ? `<div class="crop-tamil">${crop.tamil}</div>` : ''}
+                    ${crop.botanical ? `<div class="crop-botanical">${crop.botanical}</div>` : ''}
+                    ${crop.value_added ? `<div class="crop-value-added">${crop.value_added}</div>` : ''}
+                `;
+                
+                gridEl.appendChild(cropCard);
+            });
+            
+            loadingEl.style.display = 'none';
+            contentEl.style.display = 'block';
+        }
+
+        function showError(message) {
+            const loadingEl = document.getElementById('loadingMessage');
+            loadingEl.innerHTML = `<div class="error">${message}</div>`;
+        }
+    </script>
+</body>
+</html>
+
