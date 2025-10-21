@@ -33,13 +33,12 @@ def load_crop_data():
     global crop_data
 
     try:
-        # Use absolute path to avoid Render path issues
-        json_file = os.path.join(os.path.dirname(__file__), "crops_data.json")
-        print(f"Looking for JSON at: {json_file}")
+        # ✅ Always use absolute path on Render
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        json_file = os.path.join(base_dir, "crops_data.json")
 
         if not os.path.exists(json_file):
-            print(f"Warning: {json_file} not found! Using sample data.")
-            # Return sample data if file doesn't exist
+            print(f"⚠️ Warning: {json_file} not found! Using sample data.")
             return {
                 "Fruits": [
                     {"English": "Papaya", "Tamil": "பப்பாளி"},
@@ -51,29 +50,13 @@ def load_crop_data():
                     {"English": "Brinjal", "Tamil": "கத்தரிக்காய்"},
                     {"English": "Carrot", "Tamil": "கேரட்"},
                     {"English": "Cabbage", "Tamil": "முட்டைக்கோஸ்"}
-                ],
-                "Greens": [
-                    {"English": "Spinach", "Tamil": "பசலைக்கீரை"},
-                    {"English": "Lettuce", "Tamil": "லெட்டியூஸ்"}
-                ],
-                "Tubers": [
-                    {"English": "Potato", "Tamil": "உருளைக்கிழங்கு"},
-                    {"English": "Sweet Potato", "Tamil": "சர்க்கரைவள்ளிக்கிழங்கு"}
-                ],
-                "Herbal": [
-                    {"English": "Tulsi", "Tamil": "துளசி"},
-                    {"English": "Aloe Vera", "Tamil": "கற்றாழை"}
-                ],
-                "Units": [
-                    {"English": "Dairy Unit", "Tamil": "பால் பிரிவு"},
-                    {"English": "Poultry Unit", "Tamil": "கோழி பிரிவு"}
                 ]
             }
 
-        with open(json_file, 'r', encoding='utf-8') as f:
+        with open(json_file, "r", encoding="utf-8") as f:
             crop_data = json.load(f)
 
-        print(f"✅ Loaded crop data with {sum(len(items) for items in crop_data.values())} total items")
+        print(f"✅ Loaded crop data successfully with {sum(len(v) for v in crop_data.values())} items.")
         return crop_data
 
     except Exception as e:
