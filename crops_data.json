@@ -1,154 +1,579 @@
 {
   "Fruits": [
     {
+      "English": "Fruits",
+      "Tamil": "nan",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "S.NO"
+    },
+    {
       "English": "Papaya",
-      "Tamil": "பப்பாளி"
+      "Tamil": "பப்பாளி",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "1",
+      "BOTANICAL NAME": "Carica papaya",
+      "VALUE-ADDED PRODUCTS": "Jam, Candy, Dried Papaya",
+      "AREA (ACRES)": "1.0",
+      "INVESTMENT (₹)": "150000.0",
+      "COST OF CULTIVATION (₹)": "100000.0",
+      "GROSS INCOME (₹)": "400000.0",
+      "NET PROFIT (₹)": "300000.0"
     },
     {
       "English": "Banana",
-      "Tamil": "வாழை"
+      "Tamil": "வாழை",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "2",
+      "BOTANICAL NAME": "Musa paradisiaca",
+      "VALUE-ADDED PRODUCTS": "Banana Chips, Fibre",
+      "AREA (ACRES)": "1.0",
+      "INVESTMENT (₹)": "180000.0",
+      "COST OF CULTIVATION (₹)": "120000.0",
+      "GROSS INCOME (₹)": "450000.0",
+      "NET PROFIT (₹)": "330000.0"
     },
     {
       "English": "Guava",
-      "Tamil": "கொய்யா"
+      "Tamil": "கொய்யா",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "3",
+      "BOTANICAL NAME": "Psidium guajava",
+      "VALUE-ADDED PRODUCTS": "Guava Jelly, Cheese",
+      "AREA (ACRES)": "1.0",
+      "INVESTMENT (₹)": "200000.0",
+      "COST OF CULTIVATION (₹)": "150000.0",
+      "GROSS INCOME (₹)": "500000.0",
+      "NET PROFIT (₹)": "350000.0"
     },
     {
       "English": "Pomegranate",
-      "Tamil": "மாதுளை"
-    }
-  ],
-  "Vegetables": [
-    {
-      "English": "Brinjal",
-      "Tamil": "கத்திரிக்காய்"
-    },
-    {
-      "English": "Bitter Gourd",
-      "Tamil": "பாகற்காய்"
-    },
-    {
-      "English": "Bottle Gourd",
-      "Tamil": "சுரைக்காய்"
-    },
-    {
-      "English": "Pumpkin",
-      "Tamil": "பூசணிக்காய்"
-    },
-    {
-      "English": "Bhendi (Okra)",
-      "Tamil": "வேண்டைக்காய்"
-    },
-    {
-      "English": "Carrot",
-      "Tamil": "காரட்"
-    },
-    {
-      "English": "Cabbage",
-      "Tamil": "முட்டைக்கோஸ்"
-    },
-    {
-      "English": "Cauliflower",
-      "Tamil": "பூக்கோஸ்"
-    },
-    {
-      "English": "Beans",
-      "Tamil": "பீன்ஸ்"
-    },
-    {
-      "English": "Beetroot",
-      "Tamil": "பீட்ரூட்"
-    },
-    {
-      "English": "Broccoli",
-      "Tamil": "ப்ரோக்கோலி"
-    },
-    {
-      "English": "Moringa",
-      "Tamil": "முருங்கை"
+      "Tamil": "மாதுளை",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "4",
+      "BOTANICAL NAME": "Punica granatum",
+      "VALUE-ADDED PRODUCTS": "Juice, Peel Powder",
+      "AREA (ACRES)": "1.0",
+      "INVESTMENT (₹)": "250000.0",
+      "COST OF CULTIVATION (₹)": "180000.0",
+      "GROSS INCOME (₹)": "550000.0",
+      "NET PROFIT (₹)": "370000.0"
     }
   ],
   "Greens": [
     {
+      "English": "Moringa",
+      "Tamil": "முருங்கை",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "16",
+      "BOTANICAL NAME": "Moringa oleifera",
+      "VALUE-ADDED PRODUCTS": "Leaf Powder, Oil",
+      "AREA (ACRES)": "0.5",
+      "INVESTMENT (₹)": "120000.0",
+      "COST OF CULTIVATION (₹)": "80000.0",
+      "GROSS INCOME (₹)": "250000.0",
+      "NET PROFIT (₹)": "170000.0"
+    },
+    {
+      "English": "Greens",
+      "Tamil": "nan",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
       "English": "Palak",
-      "Tamil": "பாலக்"
+      "Tamil": "பாலக்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "17",
+      "BOTANICAL NAME": "Beta vulgaris subsp. cicla",
+      "VALUE-ADDED PRODUCTS": "Powder, Flakes",
+      "AREA (ACRES)": "0.25",
+      "INVESTMENT (₹)": "20000.0",
+      "COST OF CULTIVATION (₹)": "15000.0",
+      "GROSS INCOME (₹)": "50000.0",
+      "NET PROFIT (₹)": "35000.0"
     },
     {
       "English": "Amaranthus",
-      "Tamil": "அரைக்கீரை"
+      "Tamil": "அரைக்கீரை",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "18",
+      "BOTANICAL NAME": "Amaranthus tricolor",
+      "VALUE-ADDED PRODUCTS": "Powder, Flakes",
+      "AREA (ACRES)": "0.25",
+      "INVESTMENT (₹)": "20000.0",
+      "COST OF CULTIVATION (₹)": "15000.0",
+      "GROSS INCOME (₹)": "50000.0",
+      "NET PROFIT (₹)": "35000.0"
     },
     {
       "English": "Lettuce",
-      "Tamil": "லெட்டூஸ்"
+      "Tamil": "லெட்டூஸ்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "19",
+      "BOTANICAL NAME": "Lactuca sativa",
+      "VALUE-ADDED PRODUCTS": "Salad Mix",
+      "AREA (ACRES)": "0.25",
+      "INVESTMENT (₹)": "25000.0",
+      "COST OF CULTIVATION (₹)": "20000.0",
+      "GROSS INCOME (₹)": "60000.0",
+      "NET PROFIT (₹)": "40000.0"
     },
     {
       "English": "Spinach",
-      "Tamil": "பசலைக்கீரை"
-    }
-  ],
-  "Tubers": [
-    {
-      "English": "Potato",
-      "Tamil": "உருளைக்கிழங்கு"
+      "Tamil": "பசலைக்கீரை",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "20",
+      "BOTANICAL NAME": "Spinacia oleracea",
+      "VALUE-ADDED PRODUCTS": "Dried Powder",
+      "AREA (ACRES)": "0.25",
+      "INVESTMENT (₹)": "20000.0",
+      "COST OF CULTIVATION (₹)": "15000.0",
+      "GROSS INCOME (₹)": "50000.0",
+      "NET PROFIT (₹)": "35000.0"
     },
     {
-      "English": "Sweet Potato",
-      "Tamil": "இனிப்புக்கிழங்கு"
-    },
-    {
-      "English": "Cassava",
-      "Tamil": "மரவள்ளிக்கிழங்கு"
+      "English": "Curry Leaves",
+      "Tamil": "கருவேப்பிலை",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "27",
+      "BOTANICAL NAME": "Murraya koenigii",
+      "VALUE-ADDED PRODUCTS": "Powder, Dried Leaves",
+      "AREA (ACRES)": "0.25",
+      "INVESTMENT (₹)": "50000.0",
+      "COST OF CULTIVATION (₹)": "35000.0",
+      "GROSS INCOME (₹)": "120000.0",
+      "NET PROFIT (₹)": "85000.0"
     }
   ],
   "Herbal": [
     {
+      "English": "Herbal",
+      "Tamil": "nan",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
       "English": "Ashwagandha",
-      "Tamil": "அமுக்கரா"
+      "Tamil": "அமுக்கரா",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "24",
+      "BOTANICAL NAME": "Withania somnifera",
+      "VALUE-ADDED PRODUCTS": "Root Powder",
+      "AREA (ACRES)": "0.25",
+      "INVESTMENT (₹)": "40000.0",
+      "COST OF CULTIVATION (₹)": "30000.0",
+      "GROSS INCOME (₹)": "90000.0",
+      "NET PROFIT (₹)": "60000.0"
     },
     {
       "English": "Aloe Vera",
-      "Tamil": "கற்றாழை"
+      "Tamil": "கற்றாழை",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "25",
+      "BOTANICAL NAME": "Aloe barbadensis miller",
+      "VALUE-ADDED PRODUCTS": "Gel, Soap, Cream",
+      "AREA (ACRES)": "0.25",
+      "INVESTMENT (₹)": "60000.0",
+      "COST OF CULTIVATION (₹)": "40000.0",
+      "GROSS INCOME (₹)": "150000.0",
+      "NET PROFIT (₹)": "110000.0"
     },
     {
       "English": "Tulsi",
-      "Tamil": "துளசி"
-    },
-    {
-      "English": "Curry Leaves",
-      "Tamil": "கருவேப்பிலை"
-    },
-    {
-      "English": "Fenugreek",
-      "Tamil": "வெந்தயம்"
+      "Tamil": "துளசி",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "26",
+      "BOTANICAL NAME": "Ocimum tenuiflorum",
+      "VALUE-ADDED PRODUCTS": "Tea, Oil",
+      "AREA (ACRES)": "0.25",
+      "INVESTMENT (₹)": "30000.0",
+      "COST OF CULTIVATION (₹)": "20000.0",
+      "GROSS INCOME (₹)": "70000.0",
+      "NET PROFIT (₹)": "50000.0"
     },
     {
       "English": "Vetiver",
-      "Tamil": "வெட்டிவேர்"
+      "Tamil": "வெட்டிவேர்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "29",
+      "BOTANICAL NAME": "Chrysopogon zizanioides",
+      "VALUE-ADDED PRODUCTS": "Oil, Powder",
+      "AREA (ACRES)": "0.25",
+      "INVESTMENT (₹)": "80000.0",
+      "COST OF CULTIVATION (₹)": "50000.0",
+      "GROSS INCOME (₹)": "200000.0",
+      "NET PROFIT (₹)": "150000.0"
+    }
+  ],
+  "Others": [
+    {
+      "English": "Broccoli",
+      "Tamil": "ப்ரோக்கோலி",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "15",
+      "BOTANICAL NAME": "Brassica oleracea var. italica",
+      "VALUE-ADDED PRODUCTS": "Soup Mix, Flakes",
+      "AREA (ACRES)": "0.25",
+      "INVESTMENT (₹)": "40000.0",
+      "COST OF CULTIVATION (₹)": "30000.0",
+      "GROSS INCOME (₹)": "90000.0",
+      "NET PROFIT (₹)": "60000.0"
+    },
+    {
+      "English": "Fenugreek",
+      "Tamil": "வெந்தயம்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "28",
+      "BOTANICAL NAME": "Trigonella foenum-graecum",
+      "VALUE-ADDED PRODUCTS": "Powder, Seeds",
+      "AREA (ACRES)": "0.25",
+      "INVESTMENT (₹)": "20000.0",
+      "COST OF CULTIVATION (₹)": "15000.0",
+      "GROSS INCOME (₹)": "50000.0",
+      "NET PROFIT (₹)": "35000.0"
     },
     {
       "English": "Coriander",
-      "Tamil": "கொத்தமல்லி"
+      "Tamil": "கொத்தமல்லி",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "30",
+      "BOTANICAL NAME": "Coriandrum sativum",
+      "VALUE-ADDED PRODUCTS": "Powder, Seeds",
+      "AREA (ACRES)": "0.25",
+      "INVESTMENT (₹)": "25000.0",
+      "COST OF CULTIVATION (₹)": "20000.0",
+      "GROSS INCOME (₹)": "60000.0",
+      "NET PROFIT (₹)": "40000.0"
+    }
+  ],
+  "Tubers": [
+    {
+      "English": "Beetroot",
+      "Tamil": "பீட்ரூட்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "14",
+      "BOTANICAL NAME": "Beta vulgaris",
+      "VALUE-ADDED PRODUCTS": "Juice, Powder",
+      "AREA (ACRES)": "0.25",
+      "INVESTMENT (₹)": "35000.0",
+      "COST OF CULTIVATION (₹)": "25000.0",
+      "GROSS INCOME (₹)": "80000.0",
+      "NET PROFIT (₹)": "55000.0"
+    },
+    {
+      "English": "Tubers",
+      "Tamil": "nan",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Potato",
+      "Tamil": "உருளைக்கிழங்கு",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "21",
+      "BOTANICAL NAME": "Solanum tuberosum",
+      "VALUE-ADDED PRODUCTS": "Chips, Powder",
+      "AREA (ACRES)": "0.5",
+      "INVESTMENT (₹)": "60000.0",
+      "COST OF CULTIVATION (₹)": "45000.0",
+      "GROSS INCOME (₹)": "150000.0",
+      "NET PROFIT (₹)": "105000.0"
+    },
+    {
+      "English": "Sweet Potato",
+      "Tamil": "இனிப்புக்கிழங்கு",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "22",
+      "BOTANICAL NAME": "Ipomoea batatas",
+      "VALUE-ADDED PRODUCTS": "Chips, Flour",
+      "AREA (ACRES)": "0.5",
+      "INVESTMENT (₹)": "50000.0",
+      "COST OF CULTIVATION (₹)": "40000.0",
+      "GROSS INCOME (₹)": "120000.0",
+      "NET PROFIT (₹)": "80000.0"
+    },
+    {
+      "English": "Cassava",
+      "Tamil": "மரவள்ளிக்கிழங்கு",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "23",
+      "BOTANICAL NAME": "Manihot esculenta",
+      "VALUE-ADDED PRODUCTS": "Starch, Flour",
+      "AREA (ACRES)": "0.5",
+      "INVESTMENT (₹)": "60000.0",
+      "COST OF CULTIVATION (₹)": "45000.0",
+      "GROSS INCOME (₹)": "150000.0",
+      "NET PROFIT (₹)": "105000.0"
     }
   ],
   "Units": [
     {
+      "English": "Units",
+      "Tamil": "nan",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
       "English": "Vermicompost Unit",
-      "Tamil": "உழவன் கம்போஸ்ட்"
+      "Tamil": "உழவன் கம்போஸ்ட்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "31",
+      "VALUE-ADDED PRODUCTS": "Organic Compost",
+      "AREA (ACRES)": "0.25",
+      "INVESTMENT (₹)": "100000.0",
+      "COST OF CULTIVATION (₹)": "50000.0",
+      "GROSS INCOME (₹)": "200000.0",
+      "NET PROFIT (₹)": "150000.0"
     },
     {
       "English": "Poultry Unit",
-      "Tamil": "கோழி பண்ணை"
+      "Tamil": "கோழி பண்ணை",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "32",
+      "VALUE-ADDED PRODUCTS": "Eggs, Manure",
+      "AREA (ACRES)": "0.25",
+      "INVESTMENT (₹)": "150000.0",
+      "COST OF CULTIVATION (₹)": "100000.0",
+      "GROSS INCOME (₹)": "250000.0",
+      "NET PROFIT (₹)": "150000.0"
     },
     {
       "English": "Goat Unit",
-      "Tamil": "ஆட்டு பண்ணை"
+      "Tamil": "ஆட்டு பண்ணை",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "33",
+      "VALUE-ADDED PRODUCTS": "Milk, Manure",
+      "AREA (ACRES)": "0.25",
+      "INVESTMENT (₹)": "180000.0",
+      "COST OF CULTIVATION (₹)": "120000.0",
+      "GROSS INCOME (₹)": "300000.0",
+      "NET PROFIT (₹)": "180000.0"
     },
     {
       "English": "Dairy Unit",
-      "Tamil": "பால் பண்ணை"
+      "Tamil": "பால் பண்ணை",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "34",
+      "VALUE-ADDED PRODUCTS": "Milk, Ghee, Paneer",
+      "AREA (ACRES)": "0.5",
+      "INVESTMENT (₹)": "250000.0",
+      "COST OF CULTIVATION (₹)": "150000.0",
+      "GROSS INCOME (₹)": "400000.0",
+      "NET PROFIT (₹)": "250000.0"
     },
     {
       "English": "Azolla Unit",
-      "Tamil": "அசோல்லா"
+      "Tamil": "அசோல்லா",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "35",
+      "VALUE-ADDED PRODUCTS": "Feed Supplement",
+      "AREA (ACRES)": "0.1",
+      "INVESTMENT (₹)": "20000.0",
+      "COST OF CULTIVATION (₹)": "10000.0",
+      "GROSS INCOME (₹)": "40000.0",
+      "NET PROFIT (₹)": "30000.0"
+    }
+  ],
+  "Vegetables": [
+    {
+      "English": "Vegetables",
+      "Tamil": "nan",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Brinjal",
+      "Tamil": "கத்திரிக்காய்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "5",
+      "BOTANICAL NAME": "Solanum melongena",
+      "VALUE-ADDED PRODUCTS": "Pickle, Dried Brinjal",
+      "AREA (ACRES)": "0.25",
+      "INVESTMENT (₹)": "30000.0",
+      "COST OF CULTIVATION (₹)": "25000.0",
+      "GROSS INCOME (₹)": "60000.0",
+      "NET PROFIT (₹)": "35000.0"
+    },
+    {
+      "English": "Bitter Gourd",
+      "Tamil": "பாகற்காய்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "6",
+      "BOTANICAL NAME": "Momordica charantia",
+      "VALUE-ADDED PRODUCTS": "Chips, Juice",
+      "AREA (ACRES)": "0.25",
+      "INVESTMENT (₹)": "40000.0",
+      "COST OF CULTIVATION (₹)": "30000.0",
+      "GROSS INCOME (₹)": "80000.0",
+      "NET PROFIT (₹)": "50000.0"
+    },
+    {
+      "English": "Bottle Gourd",
+      "Tamil": "சுரைக்காய்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "7",
+      "BOTANICAL NAME": "Lagenaria siceraria",
+      "VALUE-ADDED PRODUCTS": "Juice, Halwa",
+      "AREA (ACRES)": "0.25",
+      "INVESTMENT (₹)": "35000.0",
+      "COST OF CULTIVATION (₹)": "25000.0",
+      "GROSS INCOME (₹)": "70000.0",
+      "NET PROFIT (₹)": "45000.0"
+    },
+    {
+      "English": "Pumpkin",
+      "Tamil": "பூசணிக்காய்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "8",
+      "BOTANICAL NAME": "Cucurbita maxima",
+      "VALUE-ADDED PRODUCTS": "Pumpkin Powder, Sweets",
+      "AREA (ACRES)": "0.25",
+      "INVESTMENT (₹)": "40000.0",
+      "COST OF CULTIVATION (₹)": "30000.0",
+      "GROSS INCOME (₹)": "90000.0",
+      "NET PROFIT (₹)": "60000.0"
+    },
+    {
+      "English": "Bhendi (Okra)",
+      "Tamil": "வேண்டைக்காய்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "9",
+      "BOTANICAL NAME": "Abelmoschus esculentus",
+      "VALUE-ADDED PRODUCTS": "Dried Bhendi, Powder",
+      "AREA (ACRES)": "0.25",
+      "INVESTMENT (₹)": "35000.0",
+      "COST OF CULTIVATION (₹)": "25000.0",
+      "GROSS INCOME (₹)": "80000.0",
+      "NET PROFIT (₹)": "55000.0"
+    },
+    {
+      "English": "Carrot",
+      "Tamil": "காரட்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "10",
+      "BOTANICAL NAME": "Daucus carota",
+      "VALUE-ADDED PRODUCTS": "Juice, Pickle",
+      "AREA (ACRES)": "0.25",
+      "INVESTMENT (₹)": "40000.0",
+      "COST OF CULTIVATION (₹)": "30000.0",
+      "GROSS INCOME (₹)": "90000.0",
+      "NET PROFIT (₹)": "60000.0"
+    },
+    {
+      "English": "Cabbage",
+      "Tamil": "முட்டைக்கோஸ்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "11",
+      "BOTANICAL NAME": "Brassica oleracea",
+      "VALUE-ADDED PRODUCTS": "Dehydrated Flakes",
+      "AREA (ACRES)": "0.25",
+      "INVESTMENT (₹)": "35000.0",
+      "COST OF CULTIVATION (₹)": "25000.0",
+      "GROSS INCOME (₹)": "80000.0",
+      "NET PROFIT (₹)": "55000.0"
+    },
+    {
+      "English": "Cauliflower",
+      "Tamil": "பூக்கோஸ்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "12",
+      "BOTANICAL NAME": "Brassica oleracea var. botrytis",
+      "VALUE-ADDED PRODUCTS": "Pickle, Dried",
+      "AREA (ACRES)": "0.25",
+      "INVESTMENT (₹)": "35000.0",
+      "COST OF CULTIVATION (₹)": "25000.0",
+      "GROSS INCOME (₹)": "80000.0",
+      "NET PROFIT (₹)": "55000.0"
+    },
+    {
+      "English": "Beans",
+      "Tamil": "பீன்ஸ்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "13",
+      "BOTANICAL NAME": "Phaseolus vulgaris",
+      "VALUE-ADDED PRODUCTS": "Pickle, Dried",
+      "AREA (ACRES)": "0.25",
+      "INVESTMENT (₹)": "30000.0",
+      "COST OF CULTIVATION (₹)": "25000.0",
+      "GROSS INCOME (₹)": "70000.0",
+      "NET PROFIT (₹)": "45000.0"
     }
   ]
 }

@@ -1,0 +1,561 @@
+/* CustomerDashboard.css */
+.customer-dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  color: #333;
+}
+
+/* Top Greeting Section */
+.greeting-section {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.greeting-content {
+  text-align: center;
+}
+
+.welcome-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin: 0 0 10px 0;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.welcome-subtitle {
+  font-size: 1.2rem;
+  color: #718096;
+  margin: 0 0 25px 0;
+  font-weight: 400;
+}
+
+.progress-card {
+  background: linear-gradient(135deg, #ff6b6b, #ffa726);
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.progress-icon {
+  font-size: 2rem;
+}
+
+.progress-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Personal Info Card */
+.personal-info-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.info-label {
+  font-size: 0.9rem;
+  color: #718096;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-value {
+  font-size: 1.1rem;
+  color: #2d3748;
+  font-weight: 600;
+}
+
+/* Body Composition Section */
+.body-composition-section {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin: 0 0 25px 0;
+  text-align: center;
+}
+
+.comparison-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.comparison-card {
+  background: linear-gradient(135deg, #f7fafc, #edf2f7);
+  border-radius: 15px;
+  padding: 25px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.comparison-card.current {
+  border-color: #667eea;
+  background: linear-gradient(135deg, #e6fffa, #b2f5ea);
+}
+
+.comparison-card.ideal {
+  border-color: #51cf66;
+  background: linear-gradient(135deg, #f0fff4, #c6f6d5);
+}
+
+.comparison-card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-align: center;
+}
+
+.metric-label {
+  font-size: 0.9rem;
+  color: #718096;
+  font-weight: 500;
+}
+
+.metric-value {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.target-badge {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 15px 25px;
+  border-radius: 25px;
+  text-align: center;
+  margin: 20px 0;
+  font-weight: 600;
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.target-text {
+  font-size: 1rem;
+}
+
+/* Data Table */
+.data-table-container {
+  margin: 25px 0;
+}
+
+.data-table-container h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0 0 15px 0;
+}
+
+.data-table {
+  background: #f7fafc;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background: #2d3748;
+  color: white;
+  padding: 15px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 12px 15px;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: center;
+  transition: background-color 0.2s ease;
+}
+
+.table-row:hover {
+  background: #edf2f7;
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+.fat-value {
+  color: #ff6b6b;
+  font-weight: 600;
+}
+
+.muscle-value {
+  color: #51cf66;
+  font-weight: 600;
+}
+
+/* Chart Container */
+.chart-container {
+  margin-top: 30px;
+}
+
+.chart-container h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+/* Attendance Section */
+.attendance-section {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.streak-info {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.streak-counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #ff6b6b, #ffa726);
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+}
+
+.fire-emoji {
+  font-size: 2rem;
+}
+
+.streak-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.motivational-quote {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.motivational-quote p {
+  margin: 0;
+  font-size: 1.1rem;
+  font-style: italic;
+  text-align: center;
+}
+
+/* Calendar */
+.calendar-container {
+  margin-top: 25px;
+}
+
+.calendar-container h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.calendar-day.present {
+  background: linear-gradient(135deg, #51cf66, #40c057);
+  color: white;
+  box-shadow: 0 4px 15px rgba(81, 207, 102, 0.3);
+}
+
+.calendar-day.absent {
+  background: #e2e8f0;
+  color: #a0aec0;
+}
+
+.calendar-day:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.day-number {
+  font-size: 0.8rem;
+}
+
+.day-status {
+  font-size: 0.7rem;
+  margin-top: 2px;
+}
+
+/* Trial Progress Section */
+.trial-progress-section {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.progress-container {
+  text-align: center;
+}
+
+.progress-info {
+  margin-bottom: 25px;
+}
+
+.progress-text {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 15px;
+}
+
+.progress-details {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  color: #718096;
+  font-size: 0.9rem;
+}
+
+.progress-bar-container {
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.progress-bar {
+  background: #e2e8f0;
+  height: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.progress-fill {
+  background: linear-gradient(135deg, #51cf66, #40c057);
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.8s ease;
+  box-shadow: 0 2px 8px rgba(81, 207, 102, 0.3);
+}
+
+.progress-percentage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .customer-dashboard {
+    padding: 15px;
+  }
+  
+  .welcome-title {
+    font-size: 2rem;
+  }
+  
+  .welcome-subtitle {
+    font-size: 1rem;
+  }
+  
+  .progress-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  
+  .info-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+  }
+  
+  .comparison-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .metrics {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .table-header,
+  .table-row {
+    grid-template-columns: 1fr 1fr 1fr;
+    font-size: 0.9rem;
+  }
+  
+  .calendar-grid {
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+  }
+  
+  .calendar-day {
+    font-size: 0.8rem;
+  }
+  
+  .progress-details {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-title {
+    font-size: 1.8rem;
+  }
+  
+  .progress-card {
+    padding: 15px;
+  }
+  
+  .progress-text {
+    font-size: 1rem;
+  }
+  
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .table-header,
+  .table-row {
+    font-size: 0.8rem;
+    padding: 10px;
+  }
+  
+  .calendar-day {
+    font-size: 0.7rem;
+  }
+  
+  .day-number {
+    font-size: 0.7rem;
+  }
+  
+  .day-status {
+    font-size: 0.6rem;
+  }
+}
+
+/* Animation for smooth transitions */
+.customer-dashboard * {
+  transition: all 0.3s ease;
+}
+
+/* Custom scrollbar */
+.data-table::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.data-table::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.data-table::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.data-table::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+
+

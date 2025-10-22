@@ -171,6 +171,13 @@ def process_dataframe(df, expected_cols=None, debug=False):
             "Hindi": hindi,
             "Kannada": kannada
         }
+        
+        # Add all other columns from the Excel file
+        for col_name, col_value in row.items():
+            if col_name not in [english_col, tamil_col, telugu_col, hindi_col, kannada_col, category_col]:
+                cleaned_value = clean_text(col_value)
+                if not is_blank_val(cleaned_value):
+                    entry[col_name] = cleaned_value
 
         data[cat].append(entry)
         diagnostics["per_category_counts"][cat] += 1

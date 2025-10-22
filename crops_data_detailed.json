@@ -1,0 +1,303 @@
+{
+  "Fruits": [
+    {
+      "English": "Fruits",
+      "Tamil": "nan",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Papaya",
+      "Tamil": "பப்பாளி",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Banana",
+      "Tamil": "வாழை",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Guava",
+      "Tamil": "கொய்யா",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Pomegranate",
+      "Tamil": "மாதுளை",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    }
+  ],
+  "Greens": [
+    {
+      "English": "Moringa",
+      "Tamil": "முருங்கை",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Greens",
+      "Tamil": "nan",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Palak",
+      "Tamil": "பாலக்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Amaranthus",
+      "Tamil": "அரைக்கீரை",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Lettuce",
+      "Tamil": "லெட்டூஸ்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Spinach",
+      "Tamil": "பசலைக்கீரை",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Curry Leaves",
+      "Tamil": "கருவேப்பிலை",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    }
+  ],
+  "Herbal": [
+    {
+      "English": "Herbal",
+      "Tamil": "nan",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Ashwagandha",
+      "Tamil": "அமுக்கரா",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Aloe Vera",
+      "Tamil": "கற்றாழை",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Tulsi",
+      "Tamil": "துளசி",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Vetiver",
+      "Tamil": "வெட்டிவேர்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    }
+  ],
+  "Others": [
+    {
+      "English": "Broccoli",
+      "Tamil": "ப்ரோக்கோலி",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Fenugreek",
+      "Tamil": "வெந்தயம்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Coriander",
+      "Tamil": "கொத்தமல்லி",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    }
+  ],
+  "Tubers": [
+    {
+      "English": "Beetroot",
+      "Tamil": "பீட்ரூட்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Tubers",
+      "Tamil": "nan",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Potato",
+      "Tamil": "உருளைக்கிழங்கு",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Sweet Potato",
+      "Tamil": "இனிப்புக்கிழங்கு",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Cassava",
+      "Tamil": "மரவள்ளிக்கிழங்கு",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    }
+  ],
+  "Units": [
+    {
+      "English": "Units",
+      "Tamil": "nan",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Vermicompost Unit",
+      "Tamil": "உழவன் கம்போஸ்ட்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Poultry Unit",
+      "Tamil": "கோழி பண்ணை",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Goat Unit",
+      "Tamil": "ஆட்டு பண்ணை",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Dairy Unit",
+      "Tamil": "பால் பண்ணை",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Azolla Unit",
+      "Tamil": "அசோல்லா",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    }
+  ],
+  "Vegetables": [
+    {
+      "English": "Vegetables",
+      "Tamil": "nan",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Brinjal",
+      "Tamil": "கத்திரிக்காய்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Bitter Gourd",
+      "Tamil": "பாகற்காய்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Bottle Gourd",
+      "Tamil": "சுரைக்காய்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Pumpkin",
+      "Tamil": "பூசணிக்காய்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Bhendi (Okra)",
+      "Tamil": "வேண்டைக்காய்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Carrot",
+      "Tamil": "காரட்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Cabbage",
+      "Tamil": "முட்டைக்கோஸ்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Cauliflower",
+      "Tamil": "பூக்கோஸ்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Beans",
+      "Tamil": "பீன்ஸ்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    }
+  ]
+}

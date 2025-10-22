@@ -57,22 +57,39 @@ const uiTexts = {
 // 🌱 Initialize app
 document.addEventListener('DOMContentLoaded', async function() {
     showLoading();
-    await loadCropData();
-    setupEventListeners();
-    updateCategoryButtons();
-    hideLoading();
+    try {
+        await loadCropData();
+        setupEventListeners();
+        updateCategoryButtons();
+    } catch (error) {
+        console.error('❌ Error initializing app:', error);
+        alert('Error loading the application. Please refresh the page.');
+    } finally {
+        hideLoading();
+    }
 });
 
 // 🌾 Load crop data from backend API
 async function loadCropData() {
     try {
-        const response = await fetch('/data');  // ✅ Fixed for Render
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        cropData = await response.json();
-        console.log('✅ Crop data loaded:', cropData);
+        console.log('🔄 Loading crop data from /data endpoint...');
+        const response = await fetch('/data');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        cropData = data;
+        console.log('✅ Crop data loaded successfully:', Object.keys(cropData));
+        
+        // Verify data structure
+        if (!cropData || Object.keys(cropData).length === 0) {
+            throw new Error('No crop data received from server');
+        }
+        
+        return cropData;
     } catch (error) {
         console.error('❌ Error loading crop data:', error);
-        alert('Error loading crop data. Please refresh the page.');
+        throw error; // Re-throw to be handled by caller
     }
 }
 
@@ -86,6 +103,9 @@ function setupEventListeners() {
 
     const backBtn = document.getElementById('back-btn');
     if (backBtn) backBtn.addEventListener('click', showCategorySection);
+    
+    // Setup modal event listeners
+    setupModalEventListeners();
 }
 
 // 🌐 Handle language selection
@@ -108,7 +128,12 @@ function updateCategoryButtons() {
     if (!container) return;
 
     container.innerHTML = '';
-    Object.keys(cropData).forEach(category => {
+    
+    // Get categories dynamically from the loaded data
+    const categories = Object.keys(cropData);
+    console.log('📂 Available categories:', categories);
+    
+    categories.forEach(category => {
         const btn = document.createElement('button');
         btn.className = 'category-btn';
         btn.textContent = getCategoryName(category, currentLanguage);
@@ -119,15 +144,43 @@ function updateCategoryButtons() {
 
 // 🏷️ Category name by language
 function getCategoryName(category, lang) {
-    const names = categoryLabels[category].split(' / ');
-    const index = { 'en': 0, 'ta': 1, 'te': 2, 'hi': 3, 'kn': 4 };
-    return names[index[lang]] || names[0];
+    // Check if category exists in our predefined labels
+    if (categoryLabels[category]) {
+        const names = categoryLabels[category].split(' / ');
+        const index = { 'en': 0, 'ta': 1, 'te': 2, 'hi': 3, 'kn': 4 };
+        return names[index[lang]] || names[0];
+    }
+    
+    // For categories not in our predefined list, return the category name as-is
+    // This ensures all categories from JSON data will be displayed
+    return category;
 }
 
 // 🌸 Show crops in selected category
 function selectCategory(category) {
     currentCategory = category;
-    const crops = cropData[category] || [];
+    const allCrops = cropData[category] || [];
+    
+    // Filter out category header rows and invalid entries
+    const validCrops = allCrops.filter(crop => {
+        // Skip if English value equals the category name
+        if (crop.English === category) {
+            return false;
+        }
+        
+        // Skip if Tamil is "nan" or blank
+        if (crop.Tamil === 'nan' || crop.Tamil === '' || !crop.Tamil) {
+            return false;
+        }
+        
+        // Skip if English is empty or blank
+        if (!crop.English || crop.English === '') {
+            return false;
+        }
+        
+        return true;
+    });
+    
     const grid = document.getElementById('crops-grid');
     const title = document.getElementById('crops-title');
     const backBtn = document.getElementById('back-btn');
@@ -140,7 +193,7 @@ function selectCategory(category) {
     if (['te', 'hi', 'kn'].includes(currentLanguage)) {
         showLanguageMessage();
     } else {
-        crops.forEach(crop => grid.appendChild(createCropCard(crop)));
+        validCrops.forEach(crop => grid.appendChild(createCropCard(crop)));
     }
 
     showCropsSection();
@@ -154,6 +207,15 @@ function createCropCard(crop) {
         ? (crop.Tamil?.trim() || crop.English?.trim() || '-')
         : (crop.English?.trim() || '-');
     card.innerHTML = `<div class="crop-name">${cropName}</div>`;
+    
+    // Add click event to show crop details
+    card.addEventListener('click', function() {
+        showCropDetails(crop);
+    });
+    
+    // Add cursor pointer to indicate clickable
+    card.style.cursor = 'pointer';
+    
     return card;
 }
 
@@ -194,4 +256,238 @@ function showLoading() {
 function hideLoading() {
     const el = document.getElementById('loading');
     if (el) el.classList.add('hidden');
+}
+
+// 🌱 Show crop details modal
+async function showCropDetails(crop) {
+    try {
+        // Show loading in modal
+        const modal = document.getElementById('crop-modal');
+        const modalBody = modal.querySelector('.modal-body');
+        modalBody.innerHTML = '<div class="loading"><div class="spinner"></div><p>Loading crop details...</p></div>';
+        modal.style.display = 'block';
+        
+        // Get crop name for API call
+        const cropName = crop.English?.trim() || crop.Tamil?.trim() || '';
+        
+        // Fetch detailed crop information
+        const response = await fetch(`/crop/${encodeURIComponent(cropName)}`);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const cropDetails = await response.json();
+        
+        // Populate modal with crop details
+        populateCropModal(cropDetails);
+        
+    } catch (error) {
+        console.error('❌ Error loading crop details:', error);
+        showCropDetailsError();
+    }
+}
+
+// 🌾 Populate modal with crop details
+function populateCropModal(cropDetails) {
+    const modal = document.getElementById('crop-modal');
+    const modalBody = modal.querySelector('.modal-body');
+    const modalTitle = document.getElementById('modal-crop-name');
+    
+    // Set modal title
+    modalTitle.textContent = cropDetails.name || 'Crop Details';
+    
+    // Create modal content
+    modalBody.innerHTML = `
+        <div class="crop-info-section">
+            <h3>Basic Information</h3>
+            <div class="info-grid" id="basic-info">
+                <div class="info-item">
+                    <div class="info-label">Name</div>
+                    <div class="info-value">${cropDetails.name || 'Not available'}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Category</div>
+                    <div class="info-value">${cropDetails.category || 'Not available'}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Tamil Name</div>
+                    <div class="info-value">${cropDetails.tamil_name || 'Not available'}</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="crop-info-section">
+            <h3>Names in Different Languages</h3>
+            <div class="languages-grid" id="languages-info">
+                ${Object.entries(cropDetails.languages || {}).map(([lang, name]) => 
+                    name ? `
+                    <div class="language-item">
+                        <div class="language-name">${lang}</div>
+                        <div class="language-value">${name}</div>
+                    </div>
+                    ` : ''
+                ).join('')}
+            </div>
+        </div>
+        
+        <div class="crop-info-section">
+            <h3>Additional Information</h3>
+            <div class="additional-info" id="additional-info">
+                ${generateAdditionalInfoHTML(cropDetails.additional_info || {})}
+            </div>
+        </div>
+    `;
+}
+
+// 🌿 Generate HTML for additional information with icons
+function generateAdditionalInfoHTML(additionalInfo) {
+    // Define icon mapping for different column types
+    const iconMapping = {
+        'BOTANICAL NAME': '🌿',
+        'VALUE-ADDED PRODUCTS': '🏭',
+        'AREA (ACRES)': '🌾',
+        'INVESTMENT (₹)': '💰',
+        'COST OF CULTIVATION (₹)': '🌱',
+        'GROSS INCOME (₹)': '📈',
+        'NET PROFIT (₹)': '💹',
+        'Scientific Name': '🌿',
+        'Family': '🌳',
+        'Origin': '🌍',
+        'Growing Season': '📅',
+        'Nutritional Value': '🥗',
+        'Uses': '🔧',
+        'Cultivation Tips': '💡'
+    };
+    
+    // Filter out language columns, empty values, and unwanted columns
+    const languageColumns = ['English', 'Tamil', 'Telugu', 'Hindi', 'Kannada'];
+    const unwantedColumns = ['Unnamed: 0', 'Unnamed'];
+    
+    const filteredInfo = Object.entries(additionalInfo).filter(([key, value]) => 
+        !languageColumns.includes(key) && 
+        !unwantedColumns.some(unwanted => key.includes(unwanted)) &&
+        value && 
+        value !== 'Not available' && 
+        value !== 'nan' && 
+        value !== '' &&
+        value !== null &&
+        value !== undefined
+    );
+    
+    if (filteredInfo.length === 0) {
+        return `
+            <div class="no-additional-info">
+                <div class="no-info-icon">📋</div>
+                <div class="no-info-text">No additional information available for this crop.</div>
+            </div>
+        `;
+    }
+    
+    return filteredInfo.map(([key, value]) => {
+        const icon = iconMapping[key] || '📋';
+        const formattedValue = formatValue(key, value);
+        
+        return `
+            <div class="additional-item">
+                <div class="additional-label">
+                    <span class="info-icon">${icon}</span>
+                    <strong>${key}:</strong>
+                </div>
+                <div class="additional-value">${formattedValue}</div>
+            </div>
+        `;
+    }).join('');
+}
+
+// 💰 Format values based on column type
+function formatValue(key, value) {
+    // Handle null, undefined, or empty values
+    if (!value || value === 'nan' || value === '') {
+        return 'Not available';
+    }
+    
+    // Format currency values
+    if (key.includes('₹') || key.includes('INVESTMENT') || key.includes('COST') || key.includes('INCOME') || key.includes('PROFIT')) {
+        const numValue = parseFloat(value);
+        if (!isNaN(numValue)) {
+            return `₹${numValue.toLocaleString('en-IN')}`;
+        }
+    }
+    
+    // Format area values
+    if (key.includes('AREA')) {
+        const numValue = parseFloat(value);
+        if (!isNaN(numValue)) {
+            return `${numValue} acres`;
+        }
+    }
+    
+    // Format botanical names (capitalize properly)
+    if (key.includes('BOTANICAL') || key.includes('Scientific')) {
+        return value.split(' ').map(word => 
+            word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+        ).join(' ');
+    }
+    
+    // Format value-added products (split by comma and format)
+    if (key.includes('VALUE-ADDED') || key.includes('PRODUCTS')) {
+        return value.split(',').map(item => item.trim()).join(', ');
+    }
+    
+    return value;
+}
+
+// 🌍 Show error message in modal
+function showCropDetailsError() {
+    const modal = document.getElementById('crop-modal');
+    const modalBody = modal.querySelector('.modal-body');
+    const modalTitle = document.getElementById('modal-crop-name');
+    
+    modalTitle.textContent = 'Error';
+    modalBody.innerHTML = `
+        <div class="crop-info-section">
+            <div style="text-align: center; padding: 40px;">
+                <div style="font-size: 3rem; margin-bottom: 20px;">⚠️</div>
+                <h3 style="color: #dc3545; margin-bottom: 15px;">Unable to load crop details</h3>
+                <p style="color: #6c757d;">Please try again later or contact support if the problem persists.</p>
+            </div>
+        </div>
+    `;
+}
+
+// 🌿 Modal control functions
+function setupModalEventListeners() {
+    const modal = document.getElementById('crop-modal');
+    const closeBtn = document.getElementById('modal-close');
+    const backBtn = document.getElementById('modal-back');
+    
+    // Close modal when clicking X
+    if (closeBtn) {
+        closeBtn.addEventListener('click', hideCropModal);
+    }
+    
+    // Close modal when clicking back button
+    if (backBtn) {
+        backBtn.addEventListener('click', hideCropModal);
+    }
+    
+    // Close modal when clicking outside
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                hideCropModal();
+            }
+        });
+    }
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'block') {
+            hideCropModal();
+        }
+    });
+}
+
+function hideCropModal() {
+    const modal = document.getElementById('crop-modal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
 }

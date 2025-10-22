@@ -1,114 +1,119 @@
-# 🌾 Crop Knowledge Explorer
+# Customer Dashboard - Fitness/Nutrition Tracking App
 
-A multilingual Flask web application that displays crop data in multiple languages (English, Tamil, Telugu, Hindi, Kannada).
+A clean, minimal, and motivational React dashboard for fitness and nutrition tracking. This dashboard provides customers with a comprehensive view of their wellness journey, including body composition progress, attendance streaks, and trial pack progress.
 
-## 🚀 Quick Start
+## Features
 
-### Local Development
-```bash
-# Install dependencies
-pip install -r requirements.txt
+### 🎯 Top Greeting Section
+- Personalized welcome message with customer name
+- Motivational subtext
+- Progress card showing weight loss achievements
 
-# Run the application
-python app.py
+### 📊 Personal Information Card
+- Compact display of customer details:
+  - Age, Height
+  - Wellness Center Name
+  - Coach Name
+  - Referred By
+  - Trial Pack Start Date
 
-# Open your browser to: http://localhost:5000
+### 📈 Body Composition Progress
+- **Current vs Target Comparison**: Side-by-side cards showing current and ideal metrics
+- **Target Badge**: Clear goal visualization
+- **Weekly Data Table**: Scrollable table with recent progress
+- **Interactive Line Chart**: Beautiful visualization using Recharts
+  - Red line for Body Fat %
+  - Green line for Muscle %
+  - Responsive design with tooltips
+
+### 🔥 Attendance Streaks
+- **Streak Counter**: Motivational display of current streak
+- **Calendar View**: Visual representation of attendance
+- **Dynamic Quotes**: Weekly rotating motivational messages
+- **Present/Absent Indicators**: Clear visual feedback
+
+### 📅 Trial Pack Progress
+- **Progress Bar**: Visual representation of completion
+- **Detailed Information**: Start date, days completed, days remaining
+- **Percentage Display**: Clear progress indication
+
+## Design Features
+
+- **Mobile-First Responsive Design**: Optimized for all screen sizes
+- **Clean Minimal UI**: Focus on content with beautiful gradients
+- **Motivational Color Scheme**: Energizing colors that inspire action
+- **Smooth Animations**: Subtle transitions and hover effects
+- **Accessibility**: High contrast and readable typography
+
+## Installation
+
+1. **Clone or download the files**
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**:
+   ```bash
+   npm start
+   ```
+
+4. **Open your browser** and navigate to `http://localhost:3000`
+
+## Dependencies
+
+- **React 18.2.0**: Core React library
+- **Recharts 2.8.0**: For beautiful, responsive charts
+- **React Scripts**: Development and build tools
+
+## File Structure
+
+```
+├── CustomerDashboard.jsx    # Main dashboard component
+├── CustomerDashboard.css    # Dashboard styling
+├── App.js                  # App wrapper component
+├── App.css                 # Global app styling
+├── package.json            # Dependencies and scripts
+└── README.md               # This file
 ```
 
-### Render Deployment
-1. **Build Command**: `pip install -r requirements.txt`
-2. **Start Command**: `gunicorn app:app`
-3. **Python Version**: 3.10+
+## Customization
 
-## 📁 Project Structure
-```
-Organixnatura/
-├── app.py                    # Flask backend
-├── requirements.txt          # Python dependencies
-├── crops_data.json          # Crop data (JSON format)
-├── templates/
-│   └── index.html           # Main frontend HTML
-└── static/
-    ├── style.css            # CSS styles
-    └── script.js            # Frontend JavaScript
-```
+### Mock Data
+The component uses mock data for demonstration. To integrate with real data:
 
-## 🌐 Features
-- **Multilingual Support**: English, Tamil, Telugu, Hindi, Kannada
-- **6 Categories**: Fruits, Vegetables, Greens, Tubers, Herbal, Units
-- **Responsive Design**: Works on desktop, tablet, and mobile
-- **Real-time Language Switching**: Instant UI updates
-- **Clean Data Display**: No duplicates or missing values
+1. **Replace mock data** in the `useState` hooks
+2. **Connect to your API** endpoints
+3. **Update data fetching** logic as needed
 
-## 🛠️ Technology Stack
-- **Backend**: Flask, Flask-CORS
-- **Frontend**: HTML5, CSS3, JavaScript (ES6)
-- **Data**: JSON format
-- **Deployment**: Gunicorn, Render.com
+### Styling
+- **Colors**: Modify CSS custom properties for brand colors
+- **Layout**: Adjust grid and flex properties for different layouts
+- **Typography**: Update font families and sizes in CSS
 
-## 📊 Data Structure
-The application reads from `crops_data.json` with the following structure:
-```json
-{
-  "Fruits": [
-    {"English": "Papaya", "Tamil": "பப்பாளி"},
-    {"English": "Banana", "Tamil": "வாழை"}
-  ],
-  "Vegetables": [...],
-  "Greens": [...],
-  "Tubers": [...],
-  "Herbal": [...],
-  "Units": [...]
-}
-```
+### Features
+- **Add new sections** by extending the component
+- **Modify chart data** by updating the data generation functions
+- **Customize quotes** by editing the `motivationalQuotes` array
 
-## 🔧 API Endpoints
-- `GET /` - Main web interface
-- `GET /data` - JSON crop data
-- `GET /categories` - Available categories and counts
-- `GET /health` - Health check for deployment
+## Browser Support
 
-## 📱 Usage
-1. Select a language from the top buttons
-2. Choose a category (Fruits, Vegetables, etc.)
-3. View crops in the selected language
-4. Use "Back to Categories" to return to category selection
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
 
-## 🌍 Language Support
-- **English**: Full crop names in English
-- **Tamil**: Full crop names in Tamil
-- **Telugu/Hindi/Kannada**: UI in selected language, with message for crop data
+## Performance
 
-## 🚀 Deployment Instructions
+- **Optimized rendering** with React hooks
+- **Efficient chart rendering** with Recharts
+- **Responsive images** and scalable graphics
+- **Minimal bundle size** with tree-shaking
 
-### For Render.com:
-1. **Create a GitHub repository** with this project
-2. **Connect to Render**:
-   - New → Web Service
-   - Connect your GitHub repository
-   - **Build Command**: `pip install -r requirements.txt`
-   - **Start Command**: `gunicorn app:app`
-   - **Python Version**: 3.10+
-3. **Deploy** and get your live URL!
+## License
 
-### For Local Testing:
-```bash
-# Clone the repository
-git clone <your-repo-url>
-cd Organixnatura
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run locally
-python app.py
-```
-
-## 📝 License
-This project is open source and available under the MIT License.
-
-## 🤝 Contributing
-Feel free to submit issues and enhancement requests!
+MIT License - feel free to use this dashboard in your projects!
 
 ---
-**Built with ❤️ for agricultural knowledge sharing**
+
+**Built with ❤️ for wellness and fitness tracking**

@@ -29,54 +29,35 @@ CORS(app)
 crop_data = {}
 
 def load_crop_data():
-    """Load crop data from JSON file (absolute path for Render)"""
+    """Load crop data from JSON file with debug info"""
     global crop_data
+
     try:
         base_dir = os.path.dirname(os.path.abspath(__file__))
         json_file = os.path.join(base_dir, "crops_data.json")
 
-        # ✅ Absolute path ensures it works on Render
+        print(f"🔍 Looking for JSON at: {json_file}")
+        print(f"📁 File exists: {os.path.exists(json_file)}")
+
         if not os.path.exists(json_file):
-            print(f"⚠️ Warning: {json_file} not found! Using sample data instead.")
-            return {
-                "Fruits": [
-                    {"English": "Papaya", "Tamil": "பப்பாளி"},
-                    {"English": "Banana", "Tamil": "வாழை"},
-                    {"English": "Guava", "Tamil": "கொய்யா"},
-                    {"English": "Pomegranate", "Tamil": "மாதுளை"}
-                ],
-                "Vegetables": [
-                    {"English": "Brinjal", "Tamil": "கத்தரிக்காய்"},
-                    {"English": "Carrot", "Tamil": "கேரட்"},
-                    {"English": "Cabbage", "Tamil": "முட்டைக்கோஸ்"}
-                ],
-                "Greens": [
-                    {"English": "Spinach", "Tamil": "பசலைக்கீரை"},
-                    {"English": "Lettuce", "Tamil": "லெட்டியூஸ்"}
-                ],
-                "Tubers": [
-                    {"English": "Potato", "Tamil": "உருளைக்கிழங்கு"},
-                    {"English": "Sweet Potato", "Tamil": "சர்க்கரைவள்ளிக்கிழங்கு"}
-                ],
-                "Herbal": [
-                    {"English": "Tulsi", "Tamil": "துளசி"},
-                    {"English": "Aloe Vera", "Tamil": "கற்றாழை"}
-                ],
-                "Units": [
-                    {"English": "Dairy Unit", "Tamil": "பால் பிரிவு"},
-                    {"English": "Poultry Unit", "Tamil": "கோழி பிரிவு"}
-                ]
-            }
+            print(f"⚠️ Warning: {json_file} not found! Using sample data.")
+            return {}
 
         with open(json_file, "r", encoding="utf-8") as f:
-            crop_data = json.load(f)
+            print("📖 Reading JSON file...")
+            data = json.load(f)
+            print("✅ JSON file loaded successfully.")
 
-        print(f"✅ Loaded crop data successfully from {json_file} ({sum(len(v) for v in crop_data.values())} items).")
-        return crop_data
+        total_items = sum(len(v) for v in data.values())
+        print(f"📊 Loaded {total_items} total crop entries across {len(data)} categories.")
+
+        crop_data = data
+        return data
 
     except Exception as e:
         print(f"❌ Error loading crop data: {e}")
         return {}
+
 
 @app.route('/')
 def index():
@@ -100,6 +81,52 @@ def get_categories():
         "categories": list(crop_data.keys()),
         "counts": {cat: len(items) for cat, items in crop_data.items()}
     })
+
+@app.route('/crop/<crop_name>')
+def get_crop_details(crop_name):
+    """API endpoint to get detailed information for a specific crop"""
+    if not crop_data:
+        load_crop_data()
+    
+    # Search for the crop across all categories
+    for category, crops in crop_data.items():
+        for crop in crops:
+            # Check if the crop name matches (case-insensitive)
+            if (crop.get('English', '').lower() == crop_name.lower() or 
+                crop.get('Tamil', '').lower() == crop_name.lower()):
+                
+                # Create detailed crop information
+                crop_details = {
+                    "name": crop.get('English', ''),
+                    "tamil_name": crop.get('Tamil', ''),
+                    "category": category,
+                    "languages": {
+                        "English": crop.get('English', ''),
+                        "Tamil": crop.get('Tamil', ''),
+                        "Telugu": crop.get('Telugu', ''),
+                        "Hindi": crop.get('Hindi', ''),
+                        "Kannada": crop.get('Kannada', '')
+                    },
+                    "additional_info": {
+                        "Scientific Name": "Not available",
+                        "Family": "Not available", 
+                        "Origin": "Not available",
+                        "Growing Season": "Not available",
+                        "Nutritional Value": "Not available",
+                        "Uses": "Not available",
+                        "Cultivation Tips": "Not available"
+                    }
+                }
+                
+                # Add any additional fields from the original crop data
+                for key, value in crop.items():
+                    if key not in ['English', 'Tamil', 'Telugu', 'Hindi', 'Kannada'] and value:
+                        crop_details["additional_info"][key] = value
+                
+                return jsonify(crop_details)
+    
+    # If crop not found
+    return jsonify({"error": "Crop not found"}), 404
 
 @app.route('/health')
 def health_check():

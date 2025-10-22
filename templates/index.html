@@ -50,6 +50,41 @@
             <div class="spinner"></div>
             <p>Loading crop data...</p>
         </div>
+
+        <!-- Crop Detail Modal -->
+        <div class="modal" id="crop-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modal-crop-name">Crop Details</h2>
+                    <button class="modal-close" id="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="crop-info-section">
+                        <h3>Basic Information</h3>
+                        <div class="info-grid" id="basic-info">
+                            <!-- Basic info will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="crop-info-section">
+                        <h3>Names in Different Languages</h3>
+                        <div class="languages-grid" id="languages-info">
+                            <!-- Language info will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="crop-info-section">
+                        <h3>Additional Information</h3>
+                        <div class="additional-info" id="additional-info">
+                            <!-- Additional info will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="modal-back-btn" id="modal-back">← Back to Crops</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
