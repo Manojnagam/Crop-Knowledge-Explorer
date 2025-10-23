@@ -67,9 +67,7 @@
       "COST OF CULTIVATION (₹)": "180000.0",
       "GROSS INCOME (₹)": "550000.0",
       "NET PROFIT (₹)": "370000.0"
-    }
-  ],
-  "Greens": [
+    },
     {
       "English": "Moringa",
       "Tamil": "முருங்கை",
@@ -84,7 +82,9 @@
       "COST OF CULTIVATION (₹)": "80000.0",
       "GROSS INCOME (₹)": "250000.0",
       "NET PROFIT (₹)": "170000.0"
-    },
+    }
+  ],
+  "Greens": [
     {
       "English": "Greens",
       "Tamil": "nan",
@@ -151,21 +151,6 @@
       "COST OF CULTIVATION (₹)": "15000.0",
       "GROSS INCOME (₹)": "50000.0",
       "NET PROFIT (₹)": "35000.0"
-    },
-    {
-      "English": "Curry Leaves",
-      "Tamil": "கருவேப்பிலை",
-      "Telugu": "",
-      "Hindi": "",
-      "Kannada": "",
-      "Unnamed: 0": "27",
-      "BOTANICAL NAME": "Murraya koenigii",
-      "VALUE-ADDED PRODUCTS": "Powder, Dried Leaves",
-      "AREA (ACRES)": "0.25",
-      "INVESTMENT (₹)": "50000.0",
-      "COST OF CULTIVATION (₹)": "35000.0",
-      "GROSS INCOME (₹)": "120000.0",
-      "NET PROFIT (₹)": "85000.0"
     }
   ],
   "Herbal": [
@@ -235,38 +220,21 @@
       "COST OF CULTIVATION (₹)": "50000.0",
       "GROSS INCOME (₹)": "200000.0",
       "NET PROFIT (₹)": "150000.0"
-    }
-  ],
-  "Others": [
-    {
-      "English": "Broccoli",
-      "Tamil": "ப்ரோக்கோலி",
-      "Telugu": "",
-      "Hindi": "",
-      "Kannada": "",
-      "Unnamed: 0": "15",
-      "BOTANICAL NAME": "Brassica oleracea var. italica",
-      "VALUE-ADDED PRODUCTS": "Soup Mix, Flakes",
-      "AREA (ACRES)": "0.25",
-      "INVESTMENT (₹)": "40000.0",
-      "COST OF CULTIVATION (₹)": "30000.0",
-      "GROSS INCOME (₹)": "90000.0",
-      "NET PROFIT (₹)": "60000.0"
     },
     {
-      "English": "Fenugreek",
-      "Tamil": "வெந்தயம்",
+      "English": "Curry Leaves",
+      "Tamil": "கருவேப்பிலை",
       "Telugu": "",
       "Hindi": "",
       "Kannada": "",
-      "Unnamed: 0": "28",
-      "BOTANICAL NAME": "Trigonella foenum-graecum",
-      "VALUE-ADDED PRODUCTS": "Powder, Seeds",
+      "Unnamed: 0": "27",
+      "BOTANICAL NAME": "Murraya koenigii",
+      "VALUE-ADDED PRODUCTS": "Powder, Dried Leaves",
       "AREA (ACRES)": "0.25",
-      "INVESTMENT (₹)": "20000.0",
-      "COST OF CULTIVATION (₹)": "15000.0",
-      "GROSS INCOME (₹)": "50000.0",
-      "NET PROFIT (₹)": "35000.0"
+      "INVESTMENT (₹)": "50000.0",
+      "COST OF CULTIVATION (₹)": "35000.0",
+      "GROSS INCOME (₹)": "120000.0",
+      "NET PROFIT (₹)": "85000.0"
     },
     {
       "English": "Coriander",
@@ -282,24 +250,24 @@
       "COST OF CULTIVATION (₹)": "20000.0",
       "GROSS INCOME (₹)": "60000.0",
       "NET PROFIT (₹)": "40000.0"
-    }
-  ],
-  "Tubers": [
+    },
     {
-      "English": "Beetroot",
-      "Tamil": "பீட்ரூட்",
+      "English": "Fenugreek",
+      "Tamil": "வெந்தயம்",
       "Telugu": "",
       "Hindi": "",
       "Kannada": "",
-      "Unnamed: 0": "14",
-      "BOTANICAL NAME": "Beta vulgaris",
-      "VALUE-ADDED PRODUCTS": "Juice, Powder",
+      "Unnamed: 0": "28",
+      "BOTANICAL NAME": "Trigonella foenum-graecum",
+      "VALUE-ADDED PRODUCTS": "Powder, Seeds",
       "AREA (ACRES)": "0.25",
-      "INVESTMENT (₹)": "35000.0",
-      "COST OF CULTIVATION (₹)": "25000.0",
-      "GROSS INCOME (₹)": "80000.0",
-      "NET PROFIT (₹)": "55000.0"
-    },
+      "INVESTMENT (₹)": "20000.0",
+      "COST OF CULTIVATION (₹)": "15000.0",
+      "GROSS INCOME (₹)": "50000.0",
+      "NET PROFIT (₹)": "35000.0"
+    }
+  ],
+  "Tubers": [
     {
       "English": "Tubers",
       "Tamil": "nan",
@@ -574,6 +542,36 @@
       "COST OF CULTIVATION (₹)": "25000.0",
       "GROSS INCOME (₹)": "70000.0",
       "NET PROFIT (₹)": "45000.0"
+    },
+    {
+      "English": "Broccoli",
+      "Tamil": "ப்ரோக்கோலி",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "15",
+      "BOTANICAL NAME": "Brassica oleracea var. italica",
+      "VALUE-ADDED PRODUCTS": "Soup Mix, Flakes",
+      "AREA (ACRES)": "0.25",
+      "INVESTMENT (₹)": "40000.0",
+      "COST OF CULTIVATION (₹)": "30000.0",
+      "GROSS INCOME (₹)": "90000.0",
+      "NET PROFIT (₹)": "60000.0"
+    },
+    {
+      "English": "Beetroot",
+      "Tamil": "பீட்ரூட்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": "",
+      "Unnamed: 0": "14",
+      "BOTANICAL NAME": "Beta vulgaris",
+      "VALUE-ADDED PRODUCTS": "Juice, Powder",
+      "AREA (ACRES)": "0.25",
+      "INVESTMENT (₹)": "35000.0",
+      "COST OF CULTIVATION (₹)": "25000.0",
+      "GROSS INCOME (₹)": "80000.0",
+      "NET PROFIT (₹)": "55000.0"
     }
   ]
 }

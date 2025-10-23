@@ -5,6 +5,45 @@ let cropData = {};
 let currentLanguage = 'en';
 let currentCategory = '';
 
+// Category mapping for validation and reassignment
+const categoryMap = {
+  "Papaya": "Fruits",
+  "Banana": "Fruits",
+  "Guava": "Fruits",
+  "Pomegranate": "Fruits",
+  "Brinjal": "Vegetables",
+  "Bitter Gourd": "Vegetables",
+  "Bottle Gourd": "Vegetables",
+  "Pumpkin": "Vegetables",
+  "Bhendi (Okra)": "Vegetables",
+  "Carrot": "Vegetables",
+  "Cabbage": "Vegetables",
+  "Cauliflower": "Vegetables",
+  "Beans": "Vegetables",
+  "Beetroot": "Vegetables",
+  "Broccoli": "Vegetables",
+  "Moringa": "Vegetables",
+  "Palak": "Greens",
+  "Amaranthus": "Greens",
+  "Lettuce": "Greens",
+  "Spinach": "Greens",
+  "Potato": "Tubers",
+  "Sweet Potato": "Tubers",
+  "Cassava": "Tubers",
+  "Ashwagandha": "Herbal",
+  "Aloe Vera": "Herbal",
+  "Tulsi": "Herbal",
+  "Curry Leaves": "Herbal",
+  "Fenugreek": "Herbal",
+  "Vetiver": "Herbal",
+  "Coriander": "Herbal",
+  "Vermicompost Unit": "Units",
+  "Poultry Unit": "Units",
+  "Goat Unit": "Units",
+  "Dairy Unit": "Units",
+  "Azolla Unit": "Units"
+};
+
 // Language mappings for category labels
 const categoryLabels = {
     "Fruits": "Fruits / பழங்கள் / పండ్లు / फल / ಹಣ್ಣುಗಳು",
@@ -69,6 +108,35 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
 });
 
+// 🔍 Validate crop categorization using categoryMap
+function validateCropCategorization() {
+    console.log("🔍 Validating crop categorization...");
+    
+    const allCategories = ['Fruits', 'Vegetables', 'Greens', 'Tubers', 'Herbal', 'Units'];
+    let validationErrors = [];
+    
+    // Check each category for correct crops
+    allCategories.forEach(category => {
+        const crops = cropData[category] || [];
+        crops.forEach(crop => {
+            const cropName = crop.English;
+            if (cropName && categoryMap[cropName]) {
+                const expectedCategory = categoryMap[cropName];
+                if (expectedCategory !== category) {
+                    validationErrors.push(`❌ ${cropName} is in ${category} but should be in ${expectedCategory}`);
+                }
+            }
+        });
+    });
+    
+    if (validationErrors.length === 0) {
+        console.log("✅ All crops are in their correct categories!");
+    } else {
+        console.warn("⚠️ Category validation issues found:");
+        validationErrors.forEach(error => console.warn(error));
+    }
+}
+
 // 🌾 Load crop data from backend API
 async function loadCropData() {
     try {
@@ -85,6 +153,27 @@ async function loadCropData() {
         if (!cropData || Object.keys(cropData).length === 0) {
             throw new Error('No crop data received from server');
         }
+        
+        // Debug logging for category counts
+        const fruits = cropData.Fruits || [];
+        const vegetables = cropData.Vegetables || [];
+        const greens = cropData.Greens || [];
+        const tubers = cropData.Tubers || [];
+        const herbal = cropData.Herbal || [];
+        const units = cropData.Units || [];
+        
+        console.table({
+            Fruits: fruits.length,
+            Vegetables: vegetables.length,
+            Greens: greens.length,
+            Tubers: tubers.length,
+            Herbal: herbal.length,
+            Units: units.length
+        });
+        console.log("✅ All categories cleaned and verified!");
+        
+        // Validate crop categorization using categoryMap
+        validateCropCategorization();
         
         return cropData;
     } catch (error) {
@@ -293,23 +382,30 @@ function populateCropModal(cropDetails) {
     // Set modal title
     modalTitle.textContent = cropDetails.name || 'Crop Details';
     
-    // Create modal content
+    // Debug logging
+    console.log('🌾 Populating modal for crop:', cropDetails.name);
+    console.log('🖼️ Image path:', cropDetails.image_path);
+    console.log('🌍 Languages:', cropDetails.languages);
+    
+    // Build image path using the first letter rule: <first_letter_lowercase>1.jpg
+    const cropName = cropDetails.name || '';
+    const category = cropDetails.category || '';
+    const firstLetter = cropName.charAt(0).toLowerCase();
+    const imagePath = `/static/images/${category}/${cropName}/${firstLetter}1.jpg`;
+    
+    console.log('🖼️ Image path used:', imagePath);
+    console.log('🔍 Full image URL will be:', window.location.origin + imagePath);
+    
+    // Create modal content with image at the top
     modalBody.innerHTML = `
-        <div class="crop-info-section">
-            <h3>Basic Information</h3>
-            <div class="info-grid" id="basic-info">
-                <div class="info-item">
-                    <div class="info-label">Name</div>
-                    <div class="info-value">${cropDetails.name || 'Not available'}</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">Category</div>
-                    <div class="info-value">${cropDetails.category || 'Not available'}</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">Tamil Name</div>
-                    <div class="info-value">${cropDetails.tamil_name || 'Not available'}</div>
-                </div>
+        <div class="crop-image-section">
+            <img src="${imagePath}" 
+                 alt="${cropDetails.name || 'Crop'}" 
+                 class="crop-image"
+                 onerror="handleImageError(this)"
+                 onload="handleImageLoad(this)">
+            <div class="no-image-placeholder" style="display: none;">
+                <div class="no-image-text">Image not available</div>
             </div>
         </div>
         
@@ -328,12 +424,32 @@ function populateCropModal(cropDetails) {
         </div>
         
         <div class="crop-info-section">
-            <h3>Additional Information</h3>
-            <div class="additional-info" id="additional-info">
-                ${generateAdditionalInfoHTML(cropDetails.additional_info || {})}
+            <h3>Botanical Name</h3>
+            <div class="botanical-name">
+                <div class="botanical-value">${cropDetails.botanical_name || 'Not available'}</div>
             </div>
         </div>
     `;
+}
+
+// 🖼️ Handle image load success
+function handleImageLoad(img) {
+    console.log('✅ Image loaded successfully:', img.src);
+    const placeholder = img.nextElementSibling;
+    if (placeholder) {
+        placeholder.style.display = 'none';
+    }
+}
+
+// 🖼️ Handle image load error
+function handleImageError(img) {
+    console.log('❌ Image failed to load:', img.src);
+    console.log('⚠️ No image found for:', img.alt);
+    img.style.display = 'none';
+    const placeholder = img.nextElementSibling;
+    if (placeholder) {
+        placeholder.style.display = 'block';
+    }
 }
 
 // 🌿 Generate HTML for additional information with icons

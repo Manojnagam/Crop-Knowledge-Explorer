@@ -38,13 +38,6 @@
   ],
   "Greens": [
     {
-      "English": "Moringa",
-      "Tamil": "முருங்கை",
-      "Telugu": "",
-      "Hindi": "",
-      "Kannada": ""
-    },
-    {
       "English": "Greens",
       "Tamil": "nan",
       "Telugu": "",
@@ -79,13 +72,6 @@
       "Hindi": "",
       "Kannada": ""
     },
-    {
-      "English": "Curry Leaves",
-      "Tamil": "கருவேப்பிலை",
-      "Telugu": "",
-      "Hindi": "",
-      "Kannada": ""
-    }
   ],
   "Herbal": [
     {
@@ -122,19 +108,10 @@
       "Telugu": "",
       "Hindi": "",
       "Kannada": ""
-    }
-  ],
-  "Others": [
-    {
-      "English": "Broccoli",
-      "Tamil": "ப்ரோக்கோலி",
-      "Telugu": "",
-      "Hindi": "",
-      "Kannada": ""
     },
     {
-      "English": "Fenugreek",
-      "Tamil": "வெந்தயம்",
+      "English": "Curry Leaves",
+      "Tamil": "கருவேப்பிலை",
       "Telugu": "",
       "Hindi": "",
       "Kannada": ""
@@ -145,16 +122,16 @@
       "Telugu": "",
       "Hindi": "",
       "Kannada": ""
-    }
-  ],
-  "Tubers": [
+    },
     {
-      "English": "Beetroot",
-      "Tamil": "பீட்ரூட்",
+      "English": "Fenugreek",
+      "Tamil": "வெந்தயம்",
       "Telugu": "",
       "Hindi": "",
       "Kannada": ""
-    },
+    }
+  ],
+  "Tubers": [
     {
       "English": "Tubers",
       "Tamil": "nan",
@@ -295,6 +272,27 @@
     {
       "English": "Beans",
       "Tamil": "பீன்ஸ்",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Moringa",
+      "Tamil": "முருங்கை",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Broccoli",
+      "Tamil": "ப்ரோக்கோலி",
+      "Telugu": "",
+      "Hindi": "",
+      "Kannada": ""
+    },
+    {
+      "English": "Beetroot",
+      "Tamil": "பீட்ரூட்",
       "Telugu": "",
       "Hindi": "",
       "Kannada": ""

@@ -267,6 +267,80 @@ body {
     100% { transform: rotate(360deg); }
 }
 
+/* Crop Image Styles */
+.crop-image-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.crop-image {
+    max-width: 200px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+    display: block;
+    margin: 10px auto;
+    transition: all 0.3s ease;
+}
+
+.crop-image:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+}
+
+.no-image-placeholder {
+    background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+    border: 2px dashed #6c757d;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px auto;
+    text-align: center;
+    max-width: 200px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.no-image-text {
+    color: #6c757d;
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.botanical-name {
+    background: linear-gradient(145deg, #f0f8f0, #e8f5e8);
+    padding: 20px;
+    border-radius: 15px;
+    border-left: 4px solid #6b8e23;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.botanical-value {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2d5016;
+    font-style: italic;
+}
+
+/* Center content below image */
+.crop-info-section {
+    text-align: center;
+}
+
+.languages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 15px;
+    margin: 20px 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* Modal Styles */
 .modal {
     display: none;
@@ -384,11 +458,6 @@ body {
     font-size: 1.1rem;
 }
 
-.languages-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
-}
 
 .language-item {
     background: linear-gradient(145deg, #e8f5e8, #d4edda);
@@ -548,9 +617,13 @@ body {
     }
     
     .info-grid,
-    .languages-grid,
     .additional-info {
         grid-template-columns: 1fr;
+    }
+    
+    .languages-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
     }
 }
 
