@@ -439,11 +439,11 @@ function populateCropModal(cropDetails) {
     const cropName = cropDetails.name || '';
     const category = cropDetails.category || '';
     
-    // Convert to lowercase for folder names as requested
-    const selectedCategory = category.toLowerCase();
-    const selectedCrop = cropName.toLowerCase();
-    const firstLetter = selectedCrop.charAt(0).toLowerCase();
-    const imagePath = `/static/images/${selectedCategory}/${selectedCrop}/${firstLetter}1.jpg`;
+    // Convert to lowercase and replace spaces with underscores for folder names
+    const safeCategory = category.replace(/\s+/g, '_').toLowerCase();
+    const safeCrop = cropName.replace(/\s+/g, '_').toLowerCase();
+    const firstLetter = safeCrop.charAt(0).toLowerCase();
+    const imagePath = `/static/images/${safeCategory}/${safeCrop}/${firstLetter}1.jpg`;
     
     console.log('🖼️ Image Path:', imagePath);
     console.log('🔍 Full image URL will be:', window.location.origin + imagePath);
