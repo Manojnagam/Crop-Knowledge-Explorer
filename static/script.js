@@ -373,6 +373,45 @@ async function showCropDetails(crop) {
     }
 }
 
+// 🌐 Generate language grid with fixed 2x3 layout
+function generateLanguageGrid(languages) {
+    // Define the 6 languages in the required order
+    const languageOrder = [
+        'English', 'Tamil', 'Telugu',
+        'Hindi', 'Kannada', 'Malayalam'
+    ];
+    
+    // Helper function to get language value with case-insensitive matching
+    function getLanguageValue(langKey) {
+        // Try exact match first
+        if (languages[langKey]) {
+            const value = languages[langKey];
+            return (value && value.trim() !== '' && value !== 'nan') ? value : '—';
+        }
+        
+        // Try case-insensitive match
+        const lowerKey = langKey.toLowerCase();
+        for (const [key, value] of Object.entries(languages)) {
+            if (key.toLowerCase() === lowerKey) {
+                return (value && value.trim() !== '' && value !== 'nan') ? value : '—';
+            }
+        }
+        
+        return '—';
+    }
+    
+    // Generate the 2x3 grid
+    return languageOrder.map(lang => {
+        const value = getLanguageValue(lang);
+        return `
+            <div class="language-item">
+                <div class="language-name">${lang}</div>
+                <div class="language-value">${value}</div>
+            </div>
+        `;
+    }).join('');
+}
+
 // 🌾 Populate modal with crop details
 function populateCropModal(cropDetails) {
     const modal = document.getElementById('crop-modal');
@@ -386,14 +425,19 @@ function populateCropModal(cropDetails) {
     console.log('🌾 Populating modal for crop:', cropDetails.name);
     console.log('🖼️ Image path:', cropDetails.image_path);
     console.log('🌍 Languages:', cropDetails.languages);
+    console.log('🌐 Language data for', cropDetails.name, cropDetails);
     
-    // Build image path using the first letter rule: <first_letter_lowercase>1.jpg
+    // Build image path using lowercase category and crop names
     const cropName = cropDetails.name || '';
     const category = cropDetails.category || '';
-    const firstLetter = cropName.charAt(0).toLowerCase();
-    const imagePath = `/static/images/${category}/${cropName}/${firstLetter}1.jpg`;
     
-    console.log('🖼️ Image path used:', imagePath);
+    // Convert to lowercase for folder names as requested
+    const selectedCategory = category.toLowerCase();
+    const selectedCrop = cropName.toLowerCase();
+    const firstLetter = selectedCrop.charAt(0).toLowerCase();
+    const imagePath = `/static/images/${selectedCategory}/${selectedCrop}/${firstLetter}1.jpg`;
+    
+    console.log('🖼️ Image Path:', imagePath);
     console.log('🔍 Full image URL will be:', window.location.origin + imagePath);
     
     // Create modal content with image at the top
@@ -412,14 +456,7 @@ function populateCropModal(cropDetails) {
         <div class="crop-info-section">
             <h3>Names in Different Languages</h3>
             <div class="languages-grid" id="languages-info">
-                ${Object.entries(cropDetails.languages || {}).map(([lang, name]) => 
-                    name ? `
-                    <div class="language-item">
-                        <div class="language-name">${lang}</div>
-                        <div class="language-value">${name}</div>
-                    </div>
-                    ` : ''
-                ).join('')}
+                ${generateLanguageGrid(cropDetails.languages || {})}
             </div>
         </div>
         
@@ -449,6 +486,7 @@ function handleImageError(img) {
     const placeholder = img.nextElementSibling;
     if (placeholder) {
         placeholder.style.display = 'block';
+        placeholder.innerHTML = '<div class="no-image-text">Image not available</div>';
     }
 }
 
