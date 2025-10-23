@@ -439,13 +439,13 @@ function populateCropModal(cropDetails) {
     const cropName = cropDetails.name || '';
     const category = cropDetails.category || '';
     
-    // Convert to lowercase and replace spaces with underscores for folder names
-    const safeCategory = category.replace(/\s+/g, '_').toLowerCase();
-    const safeCrop = cropName.replace(/\s+/g, '_').toLowerCase();
-    const firstLetter = safeCrop.charAt(0).toLowerCase();
-    const imagePath = `/static/images/${safeCategory}/${safeCrop}/${firstLetter}1.jpg`;
+    // Remove spaces entirely for folder names to match actual folder structure
+    const cleanCategory = category.replace(/\s+/g, '');
+    const cleanCrop = cropName.replace(/\s+/g, '');
+    const firstLetter = cleanCrop.charAt(0).toLowerCase();
+    const imagePath = `/static/images/${cleanCategory}/${cleanCrop}/${firstLetter}1.jpg`;
     
-    console.log('🖼️ Image Path:', imagePath);
+    console.log('🖼️ Trying image:', imagePath);
     console.log('🔍 Full image URL will be:', window.location.origin + imagePath);
     
     // Create modal content with image at the top
