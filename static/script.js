@@ -381,22 +381,30 @@ function generateLanguageGrid(languages) {
         'Hindi', 'Kannada', 'Malayalam'
     ];
     
+    // Debug logging for language data
+    console.log('🌐 Generating language grid with data:', languages);
+    
     // Helper function to get language value with case-insensitive matching
     function getLanguageValue(langKey) {
         // Try exact match first
         if (languages[langKey]) {
             const value = languages[langKey];
-            return (value && value.trim() !== '' && value !== 'nan') ? value : '—';
+            const result = (value && value.trim() !== '' && value !== 'nan') ? value : '—';
+            console.log(`  📝 ${langKey}: "${value}" → "${result}"`);
+            return result;
         }
         
         // Try case-insensitive match
         const lowerKey = langKey.toLowerCase();
         for (const [key, value] of Object.entries(languages)) {
             if (key.toLowerCase() === lowerKey) {
-                return (value && value.trim() !== '' && value !== 'nan') ? value : '—';
+                const result = (value && value.trim() !== '' && value !== 'nan') ? value : '—';
+                console.log(`  📝 ${langKey} (matched ${key}): "${value}" → "${result}"`);
+                return result;
             }
         }
         
+        console.log(`  ❌ ${langKey}: not found → "—"`);
         return '—';
     }
     
