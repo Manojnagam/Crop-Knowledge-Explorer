@@ -442,12 +442,12 @@ function populateCropModal(cropDetails) {
     // Convert category to lowercase for folder path
     const safeCategory = category.toLowerCase();
     
-    // Convert crop name to lowercase and replace spaces/special chars with underscores
-    const safeCrop = cropName.toLowerCase().replace(/\s+/g, "_");
+    // Convert crop name to lowercase and replace spaces, parentheses, and special chars with underscores
+    const safeCrop = cropName.toLowerCase().replace(/[\s\(\)]+/g, "_");
     const firstLetter = safeCrop.charAt(0);
     const imagePath = `/static/images/${safeCategory}/${safeCrop}/${firstLetter}1.jpg`;
     
-    console.log('🖼️ Image Path:', imagePath);
+    console.log('🖼️ Trying image path:', imagePath);
     console.log('🔍 Full image URL will be:', window.location.origin + imagePath);
     
     // Create modal content with image at the top
@@ -482,6 +482,7 @@ function populateCropModal(cropDetails) {
 // 🖼️ Handle image load success
 function handleImageLoad(img) {
     console.log('✅ Image loaded successfully:', img.src);
+    console.log('✅ Final image path used:', img.src);
     const placeholder = img.nextElementSibling;
     if (placeholder) {
         placeholder.style.display = 'none';
@@ -492,6 +493,18 @@ function handleImageLoad(img) {
 function handleImageError(img) {
     console.log('❌ Image failed to load:', img.src);
     console.log('⚠️ No image found for:', img.alt);
+    
+    // Try fallback with additional lowercase conversion
+    const currentSrc = img.src;
+    const fallbackPath = currentSrc.toLowerCase();
+    
+    if (currentSrc !== fallbackPath) {
+        console.log('⚠️ Image not found, trying fallback:', fallbackPath);
+        img.src = fallbackPath;
+        return; // Let the image try to load the fallback
+    }
+    
+    // If fallback also fails, show placeholder
     img.style.display = 'none';
     const placeholder = img.nextElementSibling;
     if (placeholder) {
