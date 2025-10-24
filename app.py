@@ -823,13 +823,10 @@ def get_crop_image_path(english_name, category):
 
     # Convert category and crop names to lowercase, clean special chars
     safe_category = category.lower()
-    safe_crop = (
-        english_name.lower()
-        .replace(" ", "_")
-        .replace("(", "")
-        .replace(")", "")
-        .replace("-", "_")
-    )
+    # Special case fixes (manual overrides)
+    if safe_crop == "bhendi_okra" or english_name.lower() == "bhendi (okra)":
+        safe_crop = "bhendi"
+
 
     base_path = f"static/images/{safe_category}/{safe_crop}"
     first_letter = safe_crop[0] if safe_crop else "x"
