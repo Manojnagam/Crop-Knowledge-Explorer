@@ -824,6 +824,15 @@ def get_crop_image_path(english_name, category):
     # Convert category and crop names to lowercase, clean special chars
     safe_category = category.lower()
     # Special case fixes (manual overrides)
+    safe_crop = (
+        english_name.lower()
+        .replace(" ", "_")
+        .replace("(", "")
+        .replace(")", "")
+        .replace("-", "_")
+    )
+
+    # Special case fixes
     if safe_crop == "bhendi_okra" or english_name.lower() == "bhendi (okra)":
         safe_crop = "bhendi"
 
