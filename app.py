@@ -818,50 +818,34 @@ def get_malayalam_translation(english_name):
     return malayalam_translations.get(english_name, english_name)
 
 def get_crop_image_path(english_name, category):
-    """Get the image path for a crop based on its English name and category"""
-    if not english_name:
-        return None
-    
+    """Get image path in a Render-safe lowercase format."""
     import os
-    
-    # Handle spaces in crop names (e.g., "Curry Leaves" -> "Curry Leaves")
-    # But for directory names, we need to check what actually exists
-    crop_dir_name = english_name
-    
-    # Base path for images
-    base_path = f"static/images/{category}/{crop_dir_name}"
-    
-    # Check if directory exists
-    if not os.path.exists(base_path):
-        print(f"⚠️ Image directory not found: {base_path}")
-        return None
-    
-    # Generate expected filename using first letter rule
-    first_letter = english_name[0].lower()
+
+    # Convert category and crop names to lowercase, clean special chars
+    safe_category = category.lower()
+    safe_crop = (
+        english_name.lower()
+        .replace(" ", "_")
+        .replace("(", "")
+        .replace(")", "")
+        .replace("-", "_")
+    )
+
+    base_path = f"static/images/{safe_category}/{safe_crop}"
+    first_letter = safe_crop[0] if safe_crop else "x"
     expected_filename = f"{first_letter}1.jpg"
-    expected_path = f"/static/images/{category}/{crop_dir_name}/{expected_filename}"
-    
-    # Check if expected file exists
-    if os.path.exists(f"{base_path}/{expected_filename}"):
-        print(f"✅ Found image: {expected_path}")
+    expected_path = f"/static/images/{safe_category}/{safe_crop}/{expected_filename}"
+
+    # Try expected filename
+    if os.path.exists(os.path.join(base_path, expected_filename)):
         return expected_path
-    
-    # If expected file doesn't exist, look for any image file
-    try:
-        files_in_dir = os.listdir(base_path)
-        print(f"🔍 Files in {base_path}: {files_in_dir}")
-        
-        # Look for any image file
-        for file in files_in_dir:
-            if file.lower().endswith(('.jpg', '.jpeg', '.png')):
-                image_path = f"/static/images/{category}/{crop_dir_name}/{file}"
-                print(f"✅ Found image (fallback): {image_path}")
-                return image_path
-                
-    except Exception as e:
-        print(f"❌ Error checking image directory {base_path}: {e}")
-    
-    print(f"⚠️ No image found for {english_name} in {base_path}")
+
+    # Try any image inside folder
+    if os.path.exists(base_path):
+        for file in os.listdir(base_path):
+            if file.lower().endswith((".jpg", ".jpeg", ".png")):
+                return f"/static/images/{safe_category}/{safe_crop}/{file}"
+
     return None
 
 @app.route('/health')
