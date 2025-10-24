@@ -439,16 +439,33 @@ function populateCropModal(cropDetails) {
     const cropName = cropDetails.name || '';
     const category = cropDetails.category || '';
     
-    // Convert category to lowercase for folder path
-    const safeCategory = category.toLowerCase();
-    
-    // Convert crop name to lowercase and replace spaces, parentheses, and special chars with underscores
-    const safeCrop = cropName.toLowerCase().replace(/[\s\(\)]+/g, "_");
-    const firstLetter = safeCrop.charAt(0);
+    // Normalize category folder name (lowercase)
+    const safeCategory = (category || '').toLowerCase();
+
+    // Normalize crop folder name:
+    // - lowercase
+    // - spaces -> underscores
+    // - remove parentheses
+    // - dashes -> underscores
+    let safeCrop = (cropName || '')
+      .toLowerCase()
+      .replace(/\s+/g, "_")
+      .replace(/\(/g, "")
+      .replace(/\)/g, "")
+      .replace(/-/g, "_")
+      .replace(/[^\w_]/g, ""); // remove special characters
+
+    // Special mapping overrides to match actual folder names
+    if (safeCrop.includes("bhendi")) safeCrop = "bhendi";
+    if (safeCrop.includes("bitter")) safeCrop = "bitter_gourd";
+    if (safeCrop.includes("bottle")) safeCrop = "bottle_gourd";
+    if (safeCrop.includes("okra")) safeCrop = "bhendi"; // extra safety
+
+    // Build final image path
+    const firstLetter = safeCrop.charAt(0) || "x";
     const imagePath = `/static/images/${safeCategory}/${safeCrop}/${firstLetter}1.jpg`;
-    
-    console.log('🖼️ Trying image path:', imagePath);
-    console.log('🔍 Full image URL will be:', window.location.origin + imagePath);
+
+    console.log("🖼️ Final image path used:", imagePath);
     
     // Create modal content with image at the top
     modalBody.innerHTML = `
